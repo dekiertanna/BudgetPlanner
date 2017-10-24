@@ -12,6 +12,7 @@ using Microsoft.Extensions.Options;
 using Ciamajda.Models;
 using Ciamajda.Models.AccountViewModels;
 using Ciamajda.Services;
+using PaulMiami.AspNetCore.Mvc.Recaptcha;
 
 namespace Ciamajda.Controllers
 {
@@ -104,9 +105,11 @@ namespace Ciamajda.Controllers
 
         //
         // POST: /Account/Register
+        [ValidateRecaptcha]
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
