@@ -12,6 +12,7 @@
 }
 
 <h2>@ViewData["Title"].</h2>
+<div class="container">
 
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
     <h4>Create a new account.</h4>
@@ -39,12 +40,12 @@
         </div>
     </div>
 
-   
+
     <div class="form-group">
-        
+
         <recaptcha theme="RecaptchaTheme.Dark" />
         <span class="text-danger" id="recaptchaErrorMessage"></span>
-        
+
     </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -52,11 +53,10 @@
         </div>
     </div>
 </form>
+</div>
+
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-<recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
+    <recaptcha-script validation-message-element-id="recaptchaErrorMessage" />
 }

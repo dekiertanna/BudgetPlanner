@@ -27,6 +27,12 @@ namespace Ciamajda.Controllers
             return View();
         }
 
+        public IActionResult Features()
+        {
+            ViewData["Message"] = "Features to use.";
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View();
