@@ -4,14 +4,7 @@
 @using PaulMiami.AspNetCore.Mvc.Recaptcha
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @addTagHelper *, PaulMiami.AspNetCore.Mvc.Recaptcha
-@{
-    ViewData["Title"] = "Register";
-    
 
-
-}
-
-<h2>@ViewData["Title"].</h2>
 <div class="container">
 
 <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">

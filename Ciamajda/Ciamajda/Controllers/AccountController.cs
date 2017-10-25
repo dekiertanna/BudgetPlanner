@@ -71,7 +71,8 @@ namespace Ciamajda.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction(nameof(SummaryController.Index), "Summary");
+                    //return RedirectToAction(nameof(HomeController.Index), "Home");
                 }
                 if (result.RequiresTwoFactor)
                 {

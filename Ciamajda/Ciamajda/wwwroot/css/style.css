@@ -32,6 +32,34 @@ left : 48.7%;
 position : absolute;
 top : 48%;
 }
+
+#logotype{
+color:white;
+}
+
+#logout-button {
+    color: #ffffff;
+    display: block;
+    font-family: lato;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 32px;
+    padding: 25px 14px;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all 0.4s 0s ease;
+    background-color: transparent;
+    border:none;
+}
+#logout-button:hover {
+    transition: all 0.4s 0s ease;
+    background: #0078BF;
+}
+
+#menu ul {
+    display: none;
+}
+
 #loader-wrapper .logo a {
 font-weight : 700;
 color : #3498DB;
