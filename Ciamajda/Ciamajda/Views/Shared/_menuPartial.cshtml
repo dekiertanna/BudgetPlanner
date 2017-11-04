@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Ciamajda.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div style="container" class="lft_hd col-lg-2 col-md-2 col-sm-12">
+        <nav>
+            <ul id="menu">
+                <li>
+                    <a href="#">Saldo</a>
+                    <ul class="active">
+                        @for (int i = 0; i < 10; i++)
+                        {
+                            <li><a href="#">...</a></li>
+
+                        }
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Rozklad srodkow</a>
+                    <ul>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">...</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Konta</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}
+else
+{
+    <div  class="col-lg-0 col-md-0 col-sm-0"></div>
+
+}
