@@ -6,35 +6,38 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <div style="container" class="lft_hd col-lg-2 col-md-2 col-sm-12">
-        <nav>
-            <ul id="menu">
-                <li>
-                    <a href="#">Saldo</a>
-                    <ul class="active">
-                        @for (int i = 0; i < 10; i++)
-                        {
-                            <li><a href="#">...</a></li>
-
-                        }
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Rozklad srodkow</a>
-                    <ul>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#">...</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Konta</a>
-                </li>
-            </ul>
-        </nav>
+    <div>
+        <!-- Przy dodawaniu kolejnych stron patrzcie na przykład w _ManageNav.cshtml -->
+        <ul id="menu" class=" nav nav-pills nav-stacked">
+            <li class=""><a asp-action="">Saldo</a></li>
+            <li>
+                <a>Konta</a>
+                <ul class="active">
+                    @for (int i = 0; i < 10; i++)
+                    {
+                        <li class=""><a asp-action="">Konto @i</a></li>
+                    }
+                </ul>
+            </li>
+            <li class=""><a asp-action="">Środki</a></li>
+            <li class=""><a asp-action="">Wydatki</a></li>
+            <li class=""><a asp-action="">Analizy</a></li>
+            <li class=""><a asp-action="">Kalkulator</a></li>
+        </ul>
     </div>
 }
 else
 {
-    <div  class="col-lg-0 col-md-0 col-sm-0"></div>
+    <div class="col-lg-0 col-md-0 col-sm-0"></div>
 
 }
+
+<script>
+
+
+    $(document).ready(function () {
+        $("#menu > li").click(function () {
+            $(this).find("ul").slideToggle("slow");
+        });
+    });
+</script>
