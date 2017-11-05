@@ -1,170 +1,176 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
+<!DOCTYPE html>
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Ciamajda</title>
 
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="description" content="">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-	<!--[if lt IE 9]> <script src="js/html5shiv.js"></script> 
-	<script src="js/respond.min.js"></script> <![endif]--> 		
-        <!-- Place favicon.ico in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!--[if lt IE 9]> <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script> <![endif]-->
+    <!-- Place favicon.ico in the root directory -->
 
-		 <environment names="Development,Staging,Production">
-   
-		<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
-	    <link rel="stylesheet" href="~/css/normalize.css"/>
-        <link rel="stylesheet" href="~/css/main.css"/>
-        <link rel="stylesheet" href="~/css/font-awesome.min.css"/>
-        <link rel="stylesheet" href="~/css/owl.carousel.css"/>
-        <link rel="stylesheet" href="~/css/responsive.css"/>
-        <link rel="stylesheet" href="~/css/style.css"/>
-		
-       </environment>
-        
-    
+    <environment names="Development,Staging,Production">
 
- 
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/normalize.css" />
+        <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+        <link rel="stylesheet" href="~/css/owl.carousel.css" />
+        <link rel="stylesheet" href="~/css/responsive.css" />
+        <link rel="stylesheet" href="~/css/style.css" />
+
+    </environment>
+
+
+    @Html.Raw(JavaScriptSnippet.FullScript)
+
+
 </head>
 <body>
- <!-- start preloader -->
-        <div id="loader-wrapper">
-            <div class="logo"></div>
-            <div id="loader">
+    <!-- start preloader -->
+    <div id="loader-wrapper">
+        <div class="logo"></div>
+        <div id="loader">
+        </div>
+    </div>
+    <!-- end preloader -->
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Start Header Section -->
+    <header class="main_menu_sec navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="lft_hd">
+                        <p class="h2" id="logotype">Budget Planner </p>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="rgt_hd">
+                        <div class="main_menu">
+                            <nav id="nav_menu">
+                                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div id="navbar">
+                                    <ul>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Index" class="page-scroll">Home</a></li>
+                                        <li>
+                                            <a href="#">Features do użycia <i class="fa fa-angle-down"></i></a>
+                                            <ul>
+                                                <li><a class="page-scroll" asp-controller="Home" asp-action="Features">Zajrzyj tu!</a></li>
+                                                <li><a class="page-scroll" href="#tstm_sec">Item2</a></li>
+                                                <li><a class="page-scroll" href="#lts_sec">Item3</a></li>
+                                                <li><a class="page-scroll" href="#pricing_sec">Item4</a></li>
+                                                <li><a class="page-scroll" href="#clt_sec">Item5</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a class="page-scroll" asp-controller="Home" asp-action="About">About</a></li>
+                                        <li><a class="page-scroll" asp-controller="Home" asp-action="Contact">Contact</a></li>
+
+                                        @await Html.PartialAsync("_LoginPartial")
+                                        <!-- Trzeba dodać drugi kawałek kodu-->
+                                    </ul>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- end preloader -->
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-		
-		
-<!-- Start Header Section -->
-<header class="main_menu_sec navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 col-md-3 col-sm-12">
-				<div class="lft_hd">
-					<p class="h2" id="logotype">Budget Planner </p>
-				</div>
-			</div>			
-			<div class="col-lg-9 col-md-9 col-sm-12">
-				<div class="rgt_hd">					
-					<div class="main_menu">
-						<nav id="nav_menu">
-							<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							</button>	
-						<div id="navbar">
-							<ul> 
-								<li><a asp-area="" asp-controller="Home" asp-action="Index" class="page-scroll">Home</a></li> 
-							<li><a href="#">Features do użycia <i class="fa fa-angle-down"></i></a>
-							<ul>
-								<li><a class="page-scroll"asp-controller="Home" asp-action="Features">Zajrzyj tu!</a></li>
-								<li><a class="page-scroll" href="#tstm_sec">Item2</a></li>
-								<li><a class="page-scroll" href="#lts_sec">Item3</a></li>
-								<li><a class="page-scroll" href="#pricing_sec">Item4</a></li>
-								<li><a class="page-scroll" href="#clt_sec">Item5</a></li>
-	
-							</ul>
-							</li> 						
-                                <li><a class="page-scroll" asp-controller="Home" asp-action="About">About</a></li>
-                                <li><a class="page-scroll" asp-controller="Home" asp-action="Contact">Contact</a></li>
-							
-								 @await Html.PartialAsync("_LoginPartial")
-							</ul>
-							  
-						</div>		
-						</nav>			
-					</div>					
-						
-				</div>
-			</div>	
-		</div>	
-	</div>	
-</header>
-<!-- End Header Section -->
-
-@RenderBody()
+    </header>
+    <!-- End Header Section -->
+    <div style="container">
+        <div style="myInlineBlockElement">
+                @await Html.PartialAsync("_menuPartial")
+        </div>
+        <div style="myInlineBlockElement">
+            @RenderBody()
+        </div>
+    </div>
 
 
+    <!-- start footer Section -->
+    <footer id="ft_sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ft">
+                        <ul>
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href=""><i class="fa fa-rss"></i></a></li>
+                            <li><a href=""><i class="fa fa-flickr"></i></a></li>
+                            <li><a href=""><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href=""><i class="fa fa-skype"></i></a></li>
+                            <li><a href=""><i class="fa fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                    <ul class="copy_right">
+                        <li>&copy;ZPI 2017</li>
+                        <li>developed by Dekiert Kondraczyk Markowski Pyzałka</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer Section -->
 
- <!-- start footer Section -->
-<footer id="ft_sec">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="ft">						
-					<ul>
-						<li><a href=""><i class="fa fa-facebook"></i></a></li>
-						<li><a href=""><i class="fa fa-twitter"></i></a></li>
-						<li><a href=""><i class="fa fa-dribbble"></i></a></li>
-						<li><a href=""><i class="fa fa-rss"></i></a></li>
-						<li><a href=""><i class="fa fa-flickr"></i></a></li>
-						<li><a href=""><i class="fa fa-pinterest"></i></a></li>
-						<li><a href=""><i class="fa fa-linkedin"></i></a></li>
-						<li><a href=""><i class="fa fa-skype"></i></a></li>
-						<li><a href=""><i class="fa fa-google"></i></a></li>
-					</ul>					
-				</div>
-				<ul class="copy_right">
-					<li>&copy;ZPI 2017</li>
-					<li>developed by Dekiert Kondraczyk Markowski Pyzałka</li>
-				</ul>					
-			</div>	
-		</div>
-	</div>
-</footer>
-<!-- End footer Section -->
- 
 
-<script src="~/js/vendor/jquery-1.11.3.min.js"></script>
-<script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/jquery-ui.js"></script>
-<script src="~/js/main.js"></script>   
-<script src="~/js/owl.carousel.min.js"></script>
-<script src="~/js/isotope.pkgd.min.js"></script>
-<script src="~/js/appear.js"></script>
-<script src="~/js/jquery.counterup.min.js"></script>
-<script src="~/js/waypoints.min.js"></script>
-<script src="~/js/showHide.js"></script>
-<script src="~/js/jquery.nicescroll.min.js"></script>
-<script src="~/js/jquery.easing.min.js"></script>
-<script src="~/js/scrolling-nav.js"></script>
-<script src="~/js/plugins.js"></script>
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/vendor/jquery-1.11.3.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/jquery-ui.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/isotope.pkgd.min.js"></script>
+    <script src="~/js/appear.js"></script>
+    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/waypoints.min.js"></script>
+    <script src="~/js/showHide.js"></script>
+    <script src="~/js/jquery.nicescroll.min.js"></script>
+    <script src="~/js/jquery.easing.min.js"></script>
+    <script src="~/js/scrolling-nav.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-$(document).ready(function(){
+        $(document).ready(function () {
 
-   $('.show_hide').showHide({			 
-		speed: 1000,  // speed you want the toggle to happen	
-		easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
-		changeText: 1, // if you dont want the button text to change, set this to 0
-		showText: 'View',// the button text to show when a div is closed
-		hideText: 'Close' // the button text to show when a div is open
-					 
-	}); 
+            $('.show_hide').showHide({
+                speed: 1000,  // speed you want the toggle to happen
+                easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+                changeText: 1, // if you dont want the button text to change, set this to 0
+                showText: 'View',// the button text to show when a div is closed
+                hideText: 'Close' // the button text to show when a div is open
+
+            });
 
 
-});
+        });
 
-</script>
+    </script>
 
     <script>
         var onResize = function () {
             // apply dynamic padding at the top of the body according to the fixed navbar height
-            $("body").css("padding-top", $(".navbar-fixed-top").height()+80);
+            $("body").css("padding-top", $(".navbar-fixed-top").height() + 80);
         };
 
         // attach the function to the window resize event
@@ -175,40 +181,40 @@ $(document).ready(function(){
             onResize();
         });
     </script>
-<script>
+    <script>
 
 
-    jQuery(document).ready(function( $ ) {
-        $('.counter').counterUp({
-            delay: 10,
-            time: 1000
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 10,
+                time: 1000
+            });
+
+
         });
-		
-	
-    });
-</script>
+    </script>
 
-<script>
+    <script>
 
-  //Hide Overflow of Body on DOM Ready //
-$(document).ready(function(){
-    $("body").css("overflow", "hidden");
-});
+        //Hide Overflow of Body on DOM Ready //
+        $(document).ready(function () {
+            $("body").css("overflow", "hidden");
+        });
 
-// Show Overflow of Body when Everything has Loaded 
-$(window).load(function(){
-    $("body").css("overflow", "visible");        
-    var nice=$('html').niceScroll({
-	cursorborder:"5",
-	cursorcolor:"#00AFF0",
-	cursorwidth:"3px",
-	boxzoom:true, 
-	autohidemode:true
-	});
-	 jQuery("#owl-demo").owlCarousel({ });
+        // Show Overflow of Body when Everything has Loaded
+        $(window).load(function () {
+            $("body").css("overflow", "visible");
+            var nice = $('html').niceScroll({
+                cursorborder: "5",
+                cursorcolor: "#00AFF0",
+                cursorwidth: "3px",
+                boxzoom: true,
+                autohidemode: true
+            });
+            jQuery("#owl-demo").owlCarousel({});
 
-});
-</script>
+        });
+    </script>
 
 
     @RenderSection("Scripts", required: false)

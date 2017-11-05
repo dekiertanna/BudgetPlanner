@@ -95,16 +95,7 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-.container {
-    font-size: 0;
-}
 
-.myInlineBlockElement {
-    background: tomato;
-    color: #fff;
-    display: inline-block;
-    font-size: 14px;
-}
 
 
 
