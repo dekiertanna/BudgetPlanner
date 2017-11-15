@@ -1,0 +1,95 @@
+﻿@model Ciamajda.Models.ViewModels.ExpenseViewModel
+
+
+@{
+    ViewData["Title"] = "Create";
+
+
+
+}
+<h2>Dodaj wydatek</h2>
+<div align="center">
+    @using (Html.BeginForm("create", "Expense", FormMethod.Post))
+    {
+        <table class="table">
+           
+
+            <tr>
+                <td> @Html.LabelFor(model => model.Expense.Title) </td>
+                <td>@Html.TextBoxFor(model => model.Expense.Title) </td>
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Expense.Amount) </td>
+                <td>@Html.TextBoxFor(model => model.Expense.Amount) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Expense.CurrencyCurrency)</td>
+                <td>
+                    @Html.DropDownListFor(model => model.Expense.CurrencyCurrency, new SelectListItem[]{
+                new SelectListItem() {Text = "PLN", Value="PLN"},
+                new SelectListItem() {Text = "GBP", Value="GBP"},
+                new SelectListItem() {Text = "EUR", Value="EUR"},
+                new SelectListItem() {Text = "USD", Value="USD"}})
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.AccountId) </td>
+            <td>
+
+             @Html.DropDownListFor(model=>model.Expense.AccountId,new SelectList(ViewBag.accountidlist,"Text","Value"))
+
+
+
+
+
+
+
+            </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.CategoryId) </td>
+            <td>@Html.TextBoxFor(model => model.Expense.CategoryId) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.Place) </td>
+            <td>@Html.TextBoxFor(model => model.Expense.Place) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.IsCyclical) </td>
+
+            <td>@Html.TextBoxFor(model => model.Expense.IsCyclical) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.DaysCycle) </td>
+
+            <td>@Html.TextBoxFor(model => model.Expense.DaysCycle) </td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.Time) </td>
+
+            <td>@Html.TextBoxFor(model=>model.Expense.Time, new { @id = "example1",@name="datetimepicker",@class="datetimepicker",@type="date" })
+            </tr>
+            <tr>
+                <td> @Html.LabelFor(model => model.Expense.Description) </td>
+                <td>@Html.TextAreaFor(model=>model.Expense.Description) </td>
+            </tr>
+
+                <tr>
+                    
+
+                    <td><input type="submit" value="Save" class="btn btn-default" /></td>
+                </tr>
+        </table>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    }
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

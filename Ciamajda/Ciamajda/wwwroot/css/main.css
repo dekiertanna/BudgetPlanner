@@ -100,8 +100,7 @@ textarea {
 }
 
 .myInlineBlockElement {
-    background: tomato;
-    color: #fff;
+    background: white;
     display: inline-block;
     font-size: 14px;
 }

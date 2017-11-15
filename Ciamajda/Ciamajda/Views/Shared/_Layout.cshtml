@@ -24,9 +24,12 @@
         <link rel="stylesheet" href="~/css/owl.carousel.css" />
         <link rel="stylesheet" href="~/css/responsive.css" />
         <link rel="stylesheet" href="~/css/style.css" />
-
+        <link rel="stylesheet" href="~/css/jquery-ui.min.css"/>
+        <link rel="stylesheet" href="~/css/jquery-ui.structure.min.css" />
+        <link rel="stylesheet" href="~/css/jquery-ui.theme.min.css" />
     </environment>
 
+    
 
     @Html.Raw(JavaScriptSnippet.FullScript)
 
@@ -89,14 +92,16 @@
                 </div>
             </div>
         </div>
+
+
     </header>
     <!-- End Header Section -->
-    <div style="container" >
+    <div class="container" >
 >
-        <div style="myInlineBlockElement" class="col-lg-2 col-md-2 col-sm-12 col-xs12 ">
+        <div class="myInlineBlockElement col-md-2 col-sm-12 col-xs12 ">
                 @await Html.PartialAsync("_menuPartial")
         </div>
-        <div style="myInlineBlockElement" class="col-lg-10 col-md-10 col-sm-12 col-xs12 ">
+        <div class="myInlineBlockElement col-md-10 col-sm-12 col-xs12 ">
             @RenderBody()
         </div>
     </div>
@@ -147,6 +152,8 @@
     <script src="~/js/plugins.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/js/datepicker-pls.js"></script>
+
 
 
 
@@ -215,7 +222,24 @@
             jQuery("#owl-demo").owlCarousel({});
 
         });
+
+        $(document).ready(function () {
+            $.datepicker.setDefaults($.datepicker.regional["pl"]);
+            $("#datepicker").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+
+        });
+        
+        $(document).ready(function () {
+            $("#example1").datepicker({
+                dateFormat: "yy-mm-dd",
+                regional:"pl"
+            });
+        });
     </script>
+
+   
 
 
     @RenderSection("Scripts", required: false)

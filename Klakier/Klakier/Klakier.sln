@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Klakier", "Klakier\Klakier.csproj", "{60A17789-F118-42A0-A13B-EF651671BE60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60A17789-F118-42A0-A13B-EF651671BE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A17789-F118-42A0-A13B-EF651671BE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A17789-F118-42A0-A13B-EF651671BE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A17789-F118-42A0-A13B-EF651671BE60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27D05467-810E-49BC-8573-9E7E94D2A7A0}
+	EndGlobalSection
+EndGlobal

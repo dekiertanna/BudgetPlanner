@@ -1,0 +1,43 @@
+﻿@model Ciamajda.Models.ViewModels.IncomeViewModel
+
+<div>
+    <a asp-action="Create">Dodaj dochod</a>
+</div>
+<div class="table-responsive cart_info">
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <td>Tytul</td>
+                <td>Kwota</td>
+                <td>Waluta</td>
+                <td>Konto</td>
+                <td>Kategoria</td>
+                <td>Miejsce</td>
+                <td>Czas</td>
+                <td>Opis</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.incomelist != null)
+            {
+            @foreach (var income in ViewBag.incomeList)
+            {
+                    <tr>
+                        <td>@income.Title</td>
+                        <td>@income.Amount</td>
+                        <td>@income.CurrencyCurrency</td>
+                        <td>@income.AccountId</td>
+                        <td>@income.CategoryId</td>
+                        <td>@income.Place</td>
+                        <td>@income.Time</td>
+                        <td><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+
+                    </tr>
+
+            }
+            }
+
+        </tbody>
+    </table>
+</div>
