@@ -1653,6 +1653,7 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 ol, ul {
+    list-style-type:none;
     margin-top: 0;
     margin-bottom: 10px
 }

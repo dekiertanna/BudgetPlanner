@@ -7,7 +7,7 @@
             <div class="row">
                 <div >
                     <div class="title_sec">
-                        <h1>Bilans wydatków za miesi¹c "getjakismiesiac"</h1>
+                        <h1>Bilans wydatków za miesiac "getjakismiesiac"</h1>
 
                     </div>
                 </div>
@@ -31,8 +31,13 @@
             </div>
         </div>
         <h3>Pozostalo do wydania.. ??</h3>
-        <button>Dodaj wydatek</button>
-        <button>Dodaj przychod</button>
+        <ul>
+            <li class=""><a asp-controller="OurAccount" asp-action="Index">Zarzadzaj kontami</a></li>
+            <li class=""><a asp-controller="Income" asp-action="Create">Dodaj dochod</a></li>
+            <li class=""><a asp-controller="Expense" asp-action="Create">Dodaj wydatek</a></li>
+            <li class=""><a asp-controller="Category" asp-action="Create">Dodaj kategorie</a></li>
+            <li class=""><a asp-controller="Place" asp-action="Create">Dodaj miejsce</a></li>
+        </ul>
     </section>
     <!-- End progress bar Section -->
 </div>

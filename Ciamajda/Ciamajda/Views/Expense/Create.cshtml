@@ -38,7 +38,7 @@
             <td>@Html.LabelFor(model => model.Expense.AccountId) </td>
             <td>
 
-             @Html.DropDownListFor(model=>model.Expense.AccountId,new SelectList(ViewBag.accountidlist,"Text","Value"))
+             @Html.DropDownListFor(model=>model.Expense.AccountId,new SelectList(ViewBag.accountidlist,"Value","Text"))
 
 
 
@@ -50,11 +50,11 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.CategoryId) </td>
-            <td>@Html.TextBoxFor(model => model.Expense.CategoryId) </td>
+            <td>@Html.DropDownListFor(model => model.Expense.CategoryId, new SelectList(ViewBag.categorylist, "Value", "Text")) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.Place) </td>
-            <td>@Html.TextBoxFor(model => model.Expense.Place) </td>
+            <td>@Html.DropDownListFor(model => model.Expense.Place, new SelectList(ViewBag.placelist, "Value", "Text")) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.IsCyclical) </td>

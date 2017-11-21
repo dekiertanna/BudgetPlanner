@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ciamajda.Models.APIClients;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -10,7 +11,7 @@ namespace Ciamajda
         [Display(Name = "Kwota")]
         public decimal Amount { get; set; }
         [Display(Name = "Miejsce")]
-        public string Place { get; set; }
+        public int Place { get; set; }
         [Display(Name = "Czas")]
         public DateTime Time { get; set; }
         [Display(Name = "Wydatek cykliczny")]
@@ -23,9 +24,12 @@ namespace Ciamajda
         public int CategoryId { get; set; }
         [Display(Name = "Konto")]
         public int AccountId { get; set; }
+
         [Display(Name="Tytuł")]
         public string Title { get; set; }
         [Display(Name ="Opis")]
         public string Description { get; set; }
+
+       
     }
 }

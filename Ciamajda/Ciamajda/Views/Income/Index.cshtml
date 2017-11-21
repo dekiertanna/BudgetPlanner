@@ -13,9 +13,9 @@
                 <td>Waluta</td>
                 <td>Konto</td>
                 <td>Kategoria</td>
-                <td>Miejsce</td>
                 <td>Czas</td>
                 <td>Opis</td>
+                <td>Usun</td>
             </tr>
         </thead>
         <tbody>
@@ -27,10 +27,10 @@
                         <td>@income.Title</td>
                         <td>@income.Amount</td>
                         <td>@income.CurrencyCurrency</td>
-                        <td>@income.AccountId</td>
-                        <td>@income.CategoryId</td>
-                        <td>@income.Place</td>
+                        <td>@ViewBag.incomeviewmodel.GetAccountName(@income.AccountId)</td>
+                        <td>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>                      
                         <td>@income.Time</td>
+                        <td>@income.Description</td>
                         <td><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 
                     </tr>

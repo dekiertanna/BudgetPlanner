@@ -23,7 +23,50 @@ namespace Ciamajda.Models.ViewModels
             {
 
                 iterator++;
-                types.Add(new SelectListItem() { Text = el.Id.ToString(), Value = el.Id.ToString() });
+                types.Add(new SelectListItem() { Text = el.Name.ToString(), Value = el.Id.ToString() });
+
+            }
+
+
+
+            return types;
+        }
+        internal List<Account> GetAccountIdList(string userId)
+        {
+            AccountClient ac = new AccountClient();
+            IEnumerable<Account> enumerable = ac.GetAccountList(userId);
+            return (List<Account>)enumerable;
+        }
+        public List<SelectListItem> GetPlaceList(string id)
+        {
+            PlaceClient ac = new PlaceClient();
+            IEnumerable<Place> enumerable = ac.GetPlaceList(id);
+            var types = new List<SelectListItem>();
+            var iterator = 0;
+            foreach (var el in enumerable)
+            {
+
+                iterator++;
+                types.Add(new SelectListItem() { Text = el.Name.ToString(), Value = el.Id.ToString() });
+
+            }
+
+
+
+            return types;
+        }
+
+        public List<SelectListItem> GetCategoryList(string id)
+        {
+            CategoryClient ac = new CategoryClient();
+            IEnumerable<Category> enumerable = ac.GetCategoryList(id);
+            var types = new List<SelectListItem>();
+            var iterator = 0;
+            foreach (var el in enumerable)
+            {
+
+                iterator++;
+                types.Add(new SelectListItem() { Text = el.Name.ToString(), Value = el.Id.ToString() });
 
             }
 
@@ -33,5 +76,20 @@ namespace Ciamajda.Models.ViewModels
         }
 
 
+        public String GetAccountName(int id)
+        {
+            AccountClient ac = new AccountClient();
+            Account account = ac.Find(id);
+            return account.Name;
+        }
+
+       
+
+        public String GetCategoryName(int id)
+        {
+            CategoryClient ac = new CategoryClient();
+            Category category = ac.Find(id);
+            return category.Name;
+        }
     }
 }

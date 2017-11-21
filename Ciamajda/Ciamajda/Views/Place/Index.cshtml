@@ -1,0 +1,38 @@
+﻿@model Ciamajda.Models.ViewModels.PlaceViewModel
+
+<div>
+    <a asp-action="Create">Dodaj miejsca</a>
+</div>
+<div class="table-responsive cart_info">
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <td>Nazwa</td>
+                <td>Ulica</td>
+                <td>Miasto</td>
+                <td>Nr budynku</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.Placelist != null)
+            {
+                @foreach (var Place in ViewBag.Placelist)
+                {
+                    <tr>
+                        <td>@Place.Name</td>
+                        <td>@Place.Street</td>
+                        <td>@Place.City</td>
+                        <td>@Place.Number</td>
+
+                        <td><a href="@Url.Action("Delete", "Place", new { id = @Place.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+
+                    </tr>
+
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

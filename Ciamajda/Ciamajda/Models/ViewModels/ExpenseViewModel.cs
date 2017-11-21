@@ -23,7 +23,7 @@ namespace Ciamajda.Models.ViewModels
             {
                 
                 iterator++;
-                types.Add(new SelectListItem() { Text=el.Id.ToString(), Value =el.Id.ToString()});
+                types.Add(new SelectListItem() { Text=el.Name.ToString(), Value =el.Id.ToString()});
                
             }
 
@@ -32,6 +32,73 @@ namespace Ciamajda.Models.ViewModels
             return types;
         }
 
+        internal List<Account> GetAccountIdList(string userId)
+        {
+            AccountClient ac = new AccountClient();
+            IEnumerable<Account> enumerable = ac.GetAccountList(userId);
+            return (List<Account>)enumerable;
+        }
+
+        public List<SelectListItem> GetPlaceList(string id)
+        {
+            PlaceClient ac = new PlaceClient();
+            IEnumerable<Place> enumerable = ac.GetPlaceList(id);
+            var types = new List<SelectListItem>();
+            var iterator = 0;
+            foreach (var el in enumerable)
+            {
+
+                iterator++;
+                types.Add(new SelectListItem() { Text = el.Name.ToString(), Value = el.Id.ToString() });
+
+            }
+
+
+
+            return types;
+        }
+
+        public List<SelectListItem> GetCategoryList(string id)
+        {
+            CategoryClient ac = new CategoryClient();
+            IEnumerable<Category> enumerable = ac.GetCategoryList(id);
+            var types = new List<SelectListItem>();
+            var iterator = 0;
+            foreach (var el in enumerable)
+            {
+
+                iterator++;
+                types.Add(new SelectListItem() { Text = el.Name.ToString(), Value = el.Id.ToString() });
+
+            }
+
+
+
+            return types;
+        }
+
+       
+
+        public String GetAccountName(int AccountId)
+        {
+            AccountClient ac = new AccountClient();
+            Account account = ac.Find(AccountId);
+            return account.Name;
+        }
+
+        public String GetPlaceName(int Place)
+        {
+            PlaceClient ac = new PlaceClient();
+            Place place = ac.Find(Place);
+            return place.Name;
+        }
+
+        public String GetCategoryName(int CategoryId)
+        {
+            CategoryClient ac = new CategoryClient();
+            Category category = ac.Find(CategoryId);
+            return category.Name;
+        }
 
     }
 }

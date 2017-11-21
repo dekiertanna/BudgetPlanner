@@ -22,11 +22,21 @@ namespace Ciamajda.Controllers
         // GET: Expense  
         public ActionResult Index()
         {
+            ClaimsPrincipal currentUser = User;
 
+            var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
             ExpenseClient client = new ExpenseClient();
-            ViewBag.expenselist = client.FindAll();
-
-            return View();
+            ExpenseViewModel md = new ExpenseViewModel();
+            List<Account> aclist = md.GetAccountIdList(userId);
+            List<int> accounts = new List<int>();
+            foreach (var el in aclist)
+            {
+                accounts.Add(el.Id);
+            }
+            ViewBag.expenselist = client.FindAll(accounts);
+           
+            ViewBag.expenseviewmodel = md;
+            return View(md);
         }
 
         // GET: Expense/Create
@@ -44,7 +54,26 @@ namespace Ciamajda.Controllers
             {
                 items.Add(new SelectListItem { Text = el.Text, Value = el.Value });
             }
+
             ViewBag.accountidlist=items;
+
+            List<SelectListItem> categorylist = vm.GetCategoryList(userId);
+            List<SelectListItem> categories = new List<SelectListItem>();
+            foreach (var el in categorylist)
+            {
+                categories.Add(new SelectListItem { Text = el.Text, Value = el.Value });
+            }
+
+            ViewBag.categorylist = categories;
+
+            List<SelectListItem> placelist = vm.GetPlaceList(userId);
+            List<SelectListItem> places = new List<SelectListItem>();
+            foreach (var el in placelist)
+            {
+                places.Add(new SelectListItem { Text = el.Text, Value = el.Value });
+            }
+
+            ViewBag.placelist = places;
             return View("Create");
         }
 

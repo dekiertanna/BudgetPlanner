@@ -1,26 +1,41 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using Ciamajda.Models
-
+@using Ciamajda.Models.APIClients;
+@using System.Security.Claims;
+@using Ciamajda.Models;
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
+
 @if (SignInManager.IsSignedIn(User))
 {
+
+
+
+    ClaimsPrincipal currentUser = User;
+
+    var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+    AccountClient client = new AccountClient();
+    ViewBag.Accountlist = client.GetAccountList(userId);
+
+
     <div>
         <!-- Przy dodawaniu kolejnych stron patrzcie na przykład w _ManageNav.cshtml -->
         <ul id="menu" class=" nav nav-pills nav-stacked">
-            <li class=""><a asp-action="">Saldo</a></li>
+            <li class=""><a asp-controller="Summary" asp-action="Index">Portfel</a></li>
             <li>
                 <a>Konta</a>
                 <ul class="active">
-                    @for (int i = 0; i < 10; i++)
+                   @foreach(var element in ViewBag.AccountList)
                     {
-                        <li class=""><a asp-action="">Konto @i</a></li>
+                       <li><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })" class="btn btn-primary btn-lg"></a>@element.Name</li>
                     }
                 </ul>
             </li>
             <li class=""><a asp-controller="Income"  asp-action="Index">Dochody</a></li>
             <li class=""><a asp-controller="Expense" asp-action="Index">Wydatki</a></li>
+            <li class=""><a asp-controller="Place" asp-action="Index">Miejsca</a></li>
+            <li class=""><a asp-controller="Category" asp-action="Index">Kategorie</a></li>
             <li class=""><a asp-action="">Analizy</a></li>
             <li class=""><a asp-action="">Kalkulator</a></li>
         </ul>

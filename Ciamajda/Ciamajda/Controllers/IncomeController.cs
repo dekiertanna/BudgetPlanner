@@ -22,10 +22,20 @@ namespace Ciamajda.Controllers
         // GET: Income
         public ActionResult Index()
         {
+            ClaimsPrincipal currentUser = User;
 
+            var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
             IncomeClient client = new IncomeClient();
-            ViewBag.incomeList = client.FindAll();
-
+            IncomeViewModel md = new IncomeViewModel();
+            List<Account> aclist = md.GetAccountIdList(userId);
+            List<int> accounts = new List<int>();
+            foreach (var el in aclist)
+            {
+                accounts.Add(el.Id);
+            }
+            ViewBag.incomelist = client.FindAll(accounts);
+          
+            ViewBag.incomeviewmodel = md;
             return View();
         }
 
@@ -50,6 +60,17 @@ namespace Ciamajda.Controllers
                 items.Add(new SelectListItem { Text = el.Text, Value = el.Value });
             }
             ViewBag.accountidlist = items;
+
+            List<SelectListItem> categorylist = vm.GetCategoryList(userId);
+            List<SelectListItem> categories = new List<SelectListItem>();
+            foreach (var el in categorylist)
+            {
+                categories.Add(new SelectListItem { Text = el.Text, Value = el.Value });
+            }
+
+            ViewBag.categorylist = categories;
+
+            
             return View("Create");
         }
 

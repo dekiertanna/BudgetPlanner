@@ -14,44 +14,51 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Ciamajda.Controllers
 {
-    public class OurAccountController : Controller
+    public class CategoryController : Controller
     {
 
+        
 
-
-        // GET: OurAccount  where user id==current user id
+        // GET: Category  where user id==current user id
         public ActionResult Index()
         {
             ClaimsPrincipal currentUser = User;
 
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            AccountClient client = new AccountClient();
-            ViewBag.Placelist = client.GetAccountList(userId);
+            CategoryClient client = new CategoryClient();
+            ViewBag.Categorylist = client.GetCategoryList(userId);
 
             return View();
         }
 
-        // GET: OurAccount/Create
+        // GET: Category/Create
         [HttpGet]
         public ActionResult Create()
         {
+            ClaimsPrincipal currentUser = User;
 
-            return View("Create");
+            var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            var model = new Category
+            {
+                UserId = userId
+            };
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Account OurAccount)
+        public ActionResult Create(Category Category)
         {
-            AccountClient client = new AccountClient();
-            client.Create(OurAccount);
+            CategoryClient client = new CategoryClient();
+            client.Create(Category);
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
-            AccountClient client = new AccountClient();
+            CategoryClient client = new CategoryClient();
             client.Delete(id);
             return RedirectToAction("Index");
         }
@@ -59,20 +66,20 @@ namespace Ciamajda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id)
         {
-            AccountClient client = new AccountClient();
-            AccountViewModel CVM = new AccountViewModel();
-            CVM.Account = client.Find(id);
+            CategoryClient client = new CategoryClient();
+            CategoryViewModel CVM = new CategoryViewModel();
+            CVM.Category = client.Find(id);
             return View("Edit", CVM);
         }
         [HttpPost]
-        public ActionResult Edit(AccountViewModel CVM)
+        public ActionResult Edit(CategoryViewModel CVM)
         {
-            AccountClient client = new AccountClient();
-            client.Edit(CVM.Account);
+            CategoryClient client = new CategoryClient();
+            client.Edit(CVM.Category);
             return RedirectToAction("Index");
         }
 
-        // GET: OurAccount/Details/5
+        // GET: Category/Details/5
         public ActionResult Details(int id)
         {
             return View();

@@ -7,7 +7,7 @@ namespace Klakier
     {
         public int Id { get; set; }
         public decimal Amount { get; set; }
-        public string Place { get; set; }
+        public int Place { get; set; }
         public DateTime Time { get; set; }
         public bool IsCyclical { get; set; }
         public int? DaysCycle { get; set; }

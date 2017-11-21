@@ -14,44 +14,57 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Ciamajda.Controllers
 {
-    public class OurAccountController : Controller
+    public class PlaceController : Controller
     {
 
 
 
-        // GET: OurAccount  where user id==current user id
+        // GET: Place where user id==current user id 
         public ActionResult Index()
         {
             ClaimsPrincipal currentUser = User;
 
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            AccountClient client = new AccountClient();
-            ViewBag.Placelist = client.GetAccountList(userId);
+            PlaceClient client = new PlaceClient();
+            ViewBag.Placelist = client.GetPlaceList(userId);
 
             return View();
         }
 
-        // GET: OurAccount/Create
+        // GET: Place/Create
         [HttpGet]
         public ActionResult Create()
         {
+            ClaimsPrincipal currentUser = User;
 
-            return View("Create");
+         
+            var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            ViewBag.Uid = userId;
+           
+
+            var model = new Place
+            {
+                UserId = userId
+            };
+            return View(model);
         }
+
+       
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Account OurAccount)
+        public ActionResult Create(Place Place)
         {
-            AccountClient client = new AccountClient();
-            client.Create(OurAccount);
+            PlaceClient client = new PlaceClient();
+            client.Create(Place);
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
-            AccountClient client = new AccountClient();
+            PlaceClient client = new PlaceClient();
             client.Delete(id);
             return RedirectToAction("Index");
         }
@@ -59,20 +72,20 @@ namespace Ciamajda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id)
         {
-            AccountClient client = new AccountClient();
-            AccountViewModel CVM = new AccountViewModel();
-            CVM.Account = client.Find(id);
+            PlaceClient client = new PlaceClient();
+            PlaceViewModel CVM = new PlaceViewModel();
+            CVM.Place = client.Find(id);
             return View("Edit", CVM);
         }
         [HttpPost]
-        public ActionResult Edit(AccountViewModel CVM)
+        public ActionResult Edit(PlaceViewModel CVM)
         {
-            AccountClient client = new AccountClient();
-            client.Edit(CVM.Account);
+            PlaceClient client = new PlaceClient();
+            client.Edit(CVM.Place);
             return RedirectToAction("Index");
         }
 
-        // GET: OurAccount/Details/5
+        // GET: Place/Details/5
         public ActionResult Details(int id)
         {
             return View();

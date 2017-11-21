@@ -10,8 +10,7 @@ namespace Ciamajda
         public int Id { get; set; }
         [Display(Name = "Kwota")]
         public decimal Amount { get; set; }
-        [Display(Name = "Miejsce")]
-        public string Place { get; set; }
+       
         [Display(Name = "Czas")]
         public DateTime Time { get; set; }
         [Display(Name = "Dochód cykliczny")]
@@ -29,5 +28,7 @@ namespace Ciamajda
         [Display(Name = "Opis")]
         public string Description { get; set; }
 
+
+       
     }
 }

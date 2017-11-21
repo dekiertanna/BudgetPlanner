@@ -23,6 +23,7 @@ namespace Klakier
         public virtual DbSet<Expense> Expense { get; set; }
         public virtual DbSet<Income> Income { get; set; }
         public virtual DbSet<Portfel> Portfel { get; set; }
+        public virtual DbSet <Place> Place { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -157,22 +158,27 @@ namespace Klakier
                 entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
             });
 
+            modelBuilder.Entity<Place>(entity => {
+
+                // walidacja place to do
+            });
+
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.HasIndex(e => e.Id)
-                    .HasName("Category_ID")
-                    .IsUnique();
+              //  entity.HasIndex(e => e.Id)
+                //    .HasName("Category_ID")
+                //    .IsUnique();
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+               // entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Description)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
+             //   entity.Property(e => e.Description)
+               //     .HasMaxLength(255)
+               //     .IsUnicode(false);
 
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
+              //  entity.Property(e => e.Name)
+               //     .IsRequired()
+                //    .HasMaxLength(255)
+                //    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Currency>(entity =>

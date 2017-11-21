@@ -25,13 +25,14 @@ namespace Klakier.Controllers
 
 
 
-        // GET: api/Expenses
-        [HttpGet]
-        public IEnumerable<Expense> GetExpense()
+        // GET: api/Incomes/GetExpenses
+        [HttpPost("GetExpenses")]
+        public IEnumerable<Expense> GetExpenses([FromBody] List<int> list)
         {
-            return _context.Expense;
-        }
+            int[] ac = list.ToArray();
 
+            return _context.Expense.Where(m => ac.Contains(m.AccountId));
+        }
         // GET: api/Expenses/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetExpense([FromRoute] int id)

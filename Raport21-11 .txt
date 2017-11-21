@@ -1,0 +1,39 @@
+﻿PUSH 21-11-2017
+
+Co zostało zrobione:
+
+Widoki:
+
+brzydko:
+
+create, index -> place
+create, index -> category
+
+partial menu -> link do widokow details kont
+
+utworzone:
+
+details,index -> account
+
+do utworzenia:
+
+income,expense ->details
+
+do przerobienia:
+
+index -> summary(portfel)
+
+Backend:
+dodawanie kategorii
+dodawanie miejsc
+binding expense i income z powyzszymi
+
+do zrobienia
+
+dodawanie, usuwanie kont
+aktualizacja balance w account 
+wydatki cykliczne
+rozwazyc rozdzielenie kategorii dla dochodow i wydatkow z racji slabego powiazania
+WALIDACJA FORMULARZY.
+
+CO ZROBIĆ GDY USER NIE MA ZDEFINIOWANYCH KATEGORII I MIEJSC A CHCE DODAC WYDATEK CZY DOCHOD

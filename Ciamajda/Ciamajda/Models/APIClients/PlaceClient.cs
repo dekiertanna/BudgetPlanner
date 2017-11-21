@@ -7,11 +7,11 @@ using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Http.Features;
 namespace Ciamajda.Models.APIClients
 {
-    public class IncomeClient
+    public class PlaceClient
     {
         private string Base_URL = "http://localhost:49473/api/";
 
-        public IEnumerable<Income> FindAll(List<int> accounts)
+        public IEnumerable<Place> FindAll()
         {
             try
             {
@@ -20,10 +20,10 @@ namespace Ciamajda.Models.APIClients
                     BaseAddress = new Uri(Base_URL)
                 };
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PostAsJsonAsync("Incomes/GetIncomes",accounts).Result;
+                HttpResponseMessage response = client.GetAsync("Places").Result;
 
                 if (response.IsSuccessStatusCode)
-                    return response.Content.ReadAsAsync<IEnumerable<Income>>().Result;
+                    return response.Content.ReadAsAsync<IEnumerable<Place>>().Result;
                 return null;
             }
             catch
@@ -31,7 +31,7 @@ namespace Ciamajda.Models.APIClients
                 return null;
             }
         }
-        public Income Find(int id)
+        public Place Find(int id)
         {
             try
             {
@@ -40,10 +40,10 @@ namespace Ciamajda.Models.APIClients
                     BaseAddress = new Uri(Base_URL)
                 };
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("incomes/" + id).Result;
+                HttpResponseMessage response = client.GetAsync("Places/getPlace/" + id).Result;
 
                 if (response.IsSuccessStatusCode)
-                    return response.Content.ReadAsAsync<Income>().Result;
+                    return response.Content.ReadAsAsync<Place>().Result;
                 return null;
             }
             catch
@@ -51,7 +51,7 @@ namespace Ciamajda.Models.APIClients
                 return null;
             }
         }
-        public bool Create(Income Income)
+        public bool Create(Place Place)
         {
             try
             {
@@ -60,8 +60,7 @@ namespace Ciamajda.Models.APIClients
                     BaseAddress = new Uri(Base_URL)
                 };
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PostAsJsonAsync("incomes", Income).Result;
-                System.Diagnostics.Debug.WriteLine("err");
+                HttpResponseMessage response = client.PostAsJsonAsync("Places", Place).Result;
                 return response.IsSuccessStatusCode;
             }
             catch
@@ -69,7 +68,7 @@ namespace Ciamajda.Models.APIClients
                 return false;
             }
         }
-        public bool Edit(Income Income)
+        public bool Edit(Place Place)
         {
             try
             {
@@ -78,12 +77,35 @@ namespace Ciamajda.Models.APIClients
                     BaseAddress = new Uri(Base_URL)
                 };
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.PutAsJsonAsync("incomes/" + Income.Id, Income).Result;
+                HttpResponseMessage response = client.PutAsJsonAsync("Places/" + Place.Id, Place).Result;
                 return response.IsSuccessStatusCode;
             }
             catch
             {
                 return false;
+            }
+        }
+
+        public IEnumerable<Place> GetPlaceList(string id)
+        {
+            try
+            {
+                HttpClient client = new HttpClient
+                {
+                    BaseAddress = new Uri(Base_URL)
+                };
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage response = client.GetAsync("Places/getPlaces/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                    return response.Content.ReadAsAsync<IEnumerable<Place>>().Result;
+                return null;
+            }
+            catch
+            {
+
+                System.Diagnostics.Debug.WriteLine("This will be displayed in output window");
+
+                return null;
             }
         }
         public bool Delete(int id)
@@ -95,7 +117,7 @@ namespace Ciamajda.Models.APIClients
                     BaseAddress = new Uri(Base_URL)
                 };
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.DeleteAsync("incomes/" + id).Result;
+                HttpResponseMessage response = client.DeleteAsync("Places/" + id).Result;
                 return response.IsSuccessStatusCode;
             }
             catch
@@ -105,4 +127,3 @@ namespace Ciamajda.Models.APIClients
         }
     }
 }
-

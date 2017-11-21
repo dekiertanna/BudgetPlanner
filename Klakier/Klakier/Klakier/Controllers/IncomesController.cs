@@ -20,11 +20,13 @@ namespace Klakier.Controllers
             _context = context;
         }
 
-        // GET: api/Incomes
-        [HttpGet]
-        public IEnumerable<Income> GetIncome()
+        // GET: api/Incomes/GetIncomes
+        [HttpPost("GetIncomes")]
+        public IEnumerable<Income> GetIncomes([FromBody] List<int> list)
         {
-            return _context.Income;
+            int[] ac = list.ToArray();
+
+            return _context.Income.Where(m => ac.Contains(m.AccountId));
         }
 
         // GET: api/Incomes/5

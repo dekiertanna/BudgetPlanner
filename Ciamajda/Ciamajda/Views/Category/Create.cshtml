@@ -1,0 +1,44 @@
+﻿@model Ciamajda.Category
+
+@{
+    ViewData["Title"] = "Create";
+
+
+
+}
+<h2>Dodaj kategorie</h2>
+<div align="center">
+    @using (Html.BeginForm("create", "Category", FormMethod.Post))
+    {
+        <table class="table">
+
+
+            <tr>
+                <td> @Html.LabelFor(model => model.Name) </td>
+                <td>@Html.TextBoxFor(model => model.Name) </td>
+            </tr>
+           
+           
+            <tr>
+                <td> @Html.LabelFor(model => model.Description) </td>
+                <td>@Html.TextAreaFor(model => model.Description) </td>
+                @Html.EditorFor(model => model.UserId)
+            </tr>
+
+            <tr>
+
+
+                <td><input type="submit" value="Save" class="btn btn-default" /></td>
+            </tr>
+        </table>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    }
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
