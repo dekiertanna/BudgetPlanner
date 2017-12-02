@@ -106,7 +106,7 @@ namespace Klakier.Controllers
 
         // POST: api/Categories
         [HttpPost]
-        public async Task<IActionResult> PostCategoryIncome([FromBody] CategoryExpense CategoryIncome)
+        public async Task<IActionResult> PostCategoryIncome([FromBody] CategoryIncome CategoryIncome)
         {
             if (!ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace Klakier.Controllers
 
             }
 
-            _context.CategoryExpense.Add(CategoryIncome);
+            _context.CategoryIncome.Add(CategoryIncome);
 
             await _context.SaveChangesAsync();
 

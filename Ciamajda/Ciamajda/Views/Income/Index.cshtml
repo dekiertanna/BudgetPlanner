@@ -36,6 +36,7 @@
             {
             @foreach (var income in ViewBag.incomeList)
             {
+                Console.WriteLine(income.CaregoryId);
                     <tr>
                         <td>@income.Title</td>
                         <td>@income.Amount</td>

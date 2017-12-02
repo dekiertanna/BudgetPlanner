@@ -87,8 +87,8 @@ namespace Ciamajda.Models.ViewModels
 
         public String GetCategoryName(int id)
         {
-            CategoryClient ac = new CategoryClient();
-            Category category = ac.Find(id);
+            CategoryIncomeClient ac = new CategoryIncomeClient();
+            CategoryIncome category = ac.Find(id);
             return category.Name;
         }
     }

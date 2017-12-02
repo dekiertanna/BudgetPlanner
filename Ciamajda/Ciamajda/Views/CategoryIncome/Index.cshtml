@@ -1,7 +1,7 @@
 ﻿@model Ciamajda.Models.ViewModels.CategoryIncomeViewModel
 
 <div>
-    <a asp-action="Create">Dodaj kategorie</a>
+    <a asp-action="Create">Dodaj kategorie przychodu</a>
 </div>
 <div class="table-responsive cart_info">
 
@@ -23,7 +23,7 @@
                         <td>@category.Name</td>
                         <td>@category.Description</td>
 
-                        <td><a href="@Url.Action("Delete", "Category", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td><a href="@Url.Action("Delete", "CategoryIncome", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 
                     </tr>
 
