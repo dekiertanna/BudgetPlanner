@@ -35,7 +35,14 @@
             <li class=""><a asp-controller="Income"  asp-action="Index">Dochody</a></li>
             <li class=""><a asp-controller="Expense" asp-action="Index">Wydatki</a></li>
             <li class=""><a asp-controller="Place" asp-action="Index">Miejsca</a></li>
-            <li class=""><a asp-controller="Category" asp-action="Index">Kategorie</a></li>
+            @*@<li class=""><a asp-controller="Category" asp-action="Index">Kategorie</a></li>*@
+            <li>
+                <a>Kategorie</a>
+                <ul class="active">
+                    <li><a href="@Url.Action("Index","CategoryIncome",new { id = "Kategorie przychodów" })" class="btn btn-primary btn-lg"></a>"Kategorie przychodów"</li>
+                    <li><a href="@Url.Action("Index","CategoryExpense",new { id = "Kategorie wydatków" })" class="btn btn-primary btn-lg"></a>"Kategorie wydatków"</li>
+                </ul>
+            </li>
             <li class=""><a asp-action="">Analizy</a></li>
             <li class=""><a asp-action="">Kalkulator</a></li>
         </ul>

@@ -19,6 +19,8 @@ namespace Klakier
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
         public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<CategoryIncome> CategoryIncome { get; set; }
+        public virtual DbSet<CategoryExpense> CategoryExpense { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
         public virtual DbSet<Expense> Expense { get; set; }
         public virtual DbSet<Income> Income { get; set; }
@@ -177,6 +179,42 @@ namespace Klakier
 
               //  entity.Property(e => e.Name)
                //     .IsRequired()
+                //    .HasMaxLength(255)
+                //    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<CategoryExpense>(entity =>
+            {
+                //  entity.HasIndex(e => e.Id)
+                //    .HasName("Category_ID")
+                //    .IsUnique();
+
+                // entity.Property(e => e.Id).HasColumnName("ID");
+
+                //   entity.Property(e => e.Description)
+                //     .HasMaxLength(255)
+                //     .IsUnicode(false);
+
+                //  entity.Property(e => e.Name)
+                //     .IsRequired()
+                //    .HasMaxLength(255)
+                //    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<CategoryIncome>(entity =>
+            {
+                //  entity.HasIndex(e => e.Id)
+                //    .HasName("Category_ID")
+                //    .IsUnique();
+
+                // entity.Property(e => e.Id).HasColumnName("ID");
+
+                //   entity.Property(e => e.Description)
+                //     .HasMaxLength(255)
+                //     .IsUnicode(false);
+
+                //  entity.Property(e => e.Name)
+                //     .IsRequired()
                 //    .HasMaxLength(255)
                 //    .IsUnicode(false);
             });
