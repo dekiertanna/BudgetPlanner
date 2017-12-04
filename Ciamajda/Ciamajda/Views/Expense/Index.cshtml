@@ -1,11 +1,23 @@
 @model Ciamajda.Models.ViewModels.ExpenseViewModel
+<style type="text/css">
+    table.sortable thead:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+        content: " \25B4\25BE"
+    }
 
+    table.sortable tbody tr:nth-child(2n) td {
+        background: #fff
+    }
+
+    table.sortable tbody tr:nth-child(2n+1) td {
+        background: #e6faff;
+    }
+</style>
     <div>
         <a asp-action="Create">Dodaj wydatek</a>
     </div>
     <div class="table-responsive cart_info">
        
-            <table class="table table-condensed">
+            <table class="table table-condensed sortable">
                 <thead>
                     <tr>
                       <td>Tytul</td>
