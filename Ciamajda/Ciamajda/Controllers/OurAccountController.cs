@@ -27,8 +27,9 @@ namespace Ciamajda.Controllers
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             AccountClient client = new AccountClient();
-            ViewBag.accountlist = client.GetAccountList(userId);
-
+            IEnumerable<Account> list= client.GetAccountList(userId);
+            ViewBag.accountlist = list;
+            ViewBag.size = list.Count();
             return View();
         }
 

@@ -67,20 +67,8 @@
                                 </button>
                                 <div id="navbar">
                                     <ul>
-                                        <li><a asp-area="" asp-controller="Home" asp-action="Index" class="page-scroll">Home</a></li>
-                                        <li>
-                                            <a href="#">Features do użycia <i class="fa fa-angle-down"></i></a>
-                                            <ul>
-                                                <li><a class="page-scroll" asp-controller="Home" asp-action="Features">Zajrzyj tu!</a></li>
-                                                <li><a class="page-scroll" href="#tstm_sec">Item2</a></li>
-                                                <li><a class="page-scroll" href="#lts_sec">Item3</a></li>
-                                                <li><a class="page-scroll" href="#pricing_sec">Item4</a></li>
-                                                <li><a class="page-scroll" href="#clt_sec">Item5</a></li>
-
-                                            </ul>
-                                        </li>
+                                        <li><a asp-area="" asp-controller="Home" asp-action="Index" class="page-scroll">Home</a></li>                                  
                                         <li><a class="page-scroll" asp-controller="Home" asp-action="About">About</a></li>
-                                        <li><a class="page-scroll" asp-controller="Home" asp-action="Contact">Contact</a></li>
 
                                         @await Html.PartialAsync("_LoginPartial")
                                         <!-- Trzeba dodać drugi kawałek kodu-->

@@ -1,15 +1,63 @@
+<!-- start Service Section -->
+<section id="pr_sec">
+    <div class="container">
+        <div class="row">
+           
+            <div class="col align-self-center ">
+                <div class="title_sec">
 
+                    <h1>Twoj portfel</h1>
+                    @if (ViewBag.size < 1)
+                    {
+                    <h2>Nie masz zadnych kont! Przejdz do zarzadzania kontami, aby zalozyc konto i moc dodawac przychody i wydatki.</h2>
+                    }
+                    else
+                    {
+                    <h2>Oto Twoje konta</h2>
 
-<div style="container" class="col-lg-10 col-md-10 col-sm-10 col-xs12 ">
+                    }
+                </div>
+            </div>
+            
+        </div>
+        @{ int iterator = 0;}
+        @foreach(var element in ViewBag.accountlist)
+        {
+                    @if (iterator == 0)      
+                    { <div class="row"></div>}
+
+                           if (iterator % 3 == 0)
+                            {<div class="row"></div>}
+
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="service">
+                                <i class="fa fa-globe"></i>
+                                <h2>@element.Name</h2>
+                                <div class="service_hoverly">
+                                    <i class="fa fa-globe"></i>
+                                    <h2>@element.Name</h2>
+                                    <p>Typ:@element.Type</p>
+                                    <p>Saldo:@element.Balance</p>
+                                </div>
+                            </div>
+                        </div>
+
+            iterator++;
+        }
+        </div>
+             
+   
+</section>
+<!-- End Service Section -->
+
+<div style="container" class="col-lg-8 col-md-8 col-sm-8 col-xs12 ">
+
     <!-- start progress bar Section -->
     <section id="skill_sec">
         <div>
             <div class="row">
                 <div >
-                    <div class="title_sec">
-                        <h1>Bilans wydatków za miesiac "getjakismiesiac"</h1>
-
-                    </div>
+                    
                 </div>
                 <div class="skills progress-bar1">
                     <ul class="col-md-6 col-sm-12 col-xs-12 wow ">
@@ -30,14 +78,8 @@
 
             </div>
         </div>
-        <h3>Pozostalo do wydania.. ??</h3>
-        <ul>
-            <li class=""><a asp-controller="OurAccount" asp-action="Index">Zarzadzaj kontami</a></li>
-            <li class=""><a asp-controller="Income" asp-action="Create">Dodaj dochod</a></li>
-            <li class=""><a asp-controller="Expense" asp-action="Create">Dodaj wydatek</a></li>
-            <li class=""><a asp-controller="Category" asp-action="Create">Dodaj kategorie</a></li>
-            <li class=""><a asp-controller="Place" asp-action="Create">Dodaj miejsce</a></li>
-        </ul>
+      
+     
     </section>
     <!-- End progress bar Section -->
 </div>

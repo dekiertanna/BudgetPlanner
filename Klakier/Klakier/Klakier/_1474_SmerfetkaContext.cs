@@ -18,7 +18,6 @@ namespace Klakier
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; }
-        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<CategoryIncome> CategoryIncome { get; set; }
         public virtual DbSet<CategoryExpense> CategoryExpense { get; set; }
         public virtual DbSet<Currency> Currency { get; set; }
@@ -51,6 +50,8 @@ namespace Klakier
                 entity.Property(e => e.CreationDate).HasColumnType("datetime");
 
                 entity.Property(e => e.DiscardDate).HasColumnType("datetime");
+
+                entity.Property(e => e.Number).HasColumnName("Number");
 
                 entity.Property(e => e.Expenses)
                     .HasColumnType("decimal(10, 2)")
@@ -165,23 +166,7 @@ namespace Klakier
                 // walidacja place to do
             });
 
-            modelBuilder.Entity<Category>(entity =>
-            {
-              //  entity.HasIndex(e => e.Id)
-                //    .HasName("Category_ID")
-                //    .IsUnique();
-
-               // entity.Property(e => e.Id).HasColumnName("ID");
-
-             //   entity.Property(e => e.Description)
-               //     .HasMaxLength(255)
-               //     .IsUnicode(false);
-
-              //  entity.Property(e => e.Name)
-               //     .IsRequired()
-                //    .HasMaxLength(255)
-                //    .IsUnicode(false);
-            });
+         
 
             modelBuilder.Entity<CategoryExpense>(entity =>
             {

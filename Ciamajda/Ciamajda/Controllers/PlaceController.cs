@@ -29,6 +29,7 @@ namespace Ciamajda.Controllers
             PlaceClient client = new PlaceClient();
             ViewBag.Placelist = client.GetPlaceList(userId);
 
+
             return View();
         }
 

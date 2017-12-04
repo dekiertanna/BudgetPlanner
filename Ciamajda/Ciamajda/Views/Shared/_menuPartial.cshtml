@@ -16,13 +16,17 @@
     var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
 
     AccountClient client = new AccountClient();
-    ViewBag.Accountlist = client.GetAccountList(userId);
+    IEnumerable<Account> list = client.GetAccountList(userId);
+    ViewBag.AccountList = list;
+    ViewBag.size = list.Count();
 
 
     <div>
         <!-- Przy dodawaniu kolejnych stron patrzcie na przykład w _ManageNav.cshtml -->
         <ul id="menu" class=" nav nav-pills nav-stacked">
             <li class=""><a asp-controller="Summary" asp-action="Index">Portfel</a></li>
+            @if (ViewBag.size>0)
+            {
             <li>
                 <a>Konta</a>
                 <ul class="active">
@@ -32,8 +36,10 @@
                     }
                 </ul>
             </li>
-            <li class=""><a asp-controller="Income"  asp-action="Index">Dochody</a></li>
+           
+            <li class=""><a asp-controller="Income"  asp-action="Index">Przychody</a></li>
             <li class=""><a asp-controller="Expense" asp-action="Index">Wydatki</a></li>
+            }
             <li class=""><a asp-controller="Place" asp-action="Index">Miejsca</a></li>
             @*@<li class=""><a asp-controller="Category" asp-action="Index">Kategorie</a></li>*@
             <li>

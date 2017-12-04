@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Ciamajda.Models.APIClients;
 
 namespace Ciamajda.Controllers
 {
@@ -13,6 +15,14 @@ namespace Ciamajda.Controllers
         // GET: Summary
       public IActionResult Index()
         {
+            ClaimsPrincipal currentUser = User;
+
+            var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            AccountClient client = new AccountClient();
+            IEnumerable<Account> list = client.GetAccountList(userId);
+            ViewBag.accountlist = list;
+            ViewBag.size = list.Count();
             return View();
         }
 

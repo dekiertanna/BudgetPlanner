@@ -14,7 +14,7 @@
     }
 </style>
 <div>
-    <a asp-action="Create">Dodaj dochod</a>
+    <a asp-action="Create">Dodaj przychod</a>
 </div>
 <div class="table-responsive cart_info">
 
@@ -36,7 +36,6 @@
             {
             @foreach (var income in ViewBag.incomeList)
             {
-                Console.WriteLine(income.CaregoryId);
                     <tr>
                         <td>@income.Title</td>
                         <td>@income.Amount</td>

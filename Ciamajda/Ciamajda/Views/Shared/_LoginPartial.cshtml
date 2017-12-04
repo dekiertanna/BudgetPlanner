@@ -6,7 +6,9 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <li><a asp-area="" asp-controller="Summary" asp-action="Index" title="Podsumowanie">Podsumowanie</a></li>
+    <li><a class="page-scroll" asp-controller="OurAccount" asp-action="Index">Zarzadzaj kontami</a></li>
+
+    <li><a asp-area="" asp-controller="Summary" asp-action="Index" title="Podsumowanie">Portfel</a></li>
     <li>
         <a asp-area="" asp-controller="Manage" asp-action="Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
     </li>

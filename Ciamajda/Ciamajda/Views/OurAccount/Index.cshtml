@@ -16,6 +16,7 @@
                 <tr>
                     <td>Nazwa</td>
                     <td>Typ</td>
+                    <td>Numer</td>
                     <td>Saldo</td>
                     <td>Data utworzenia</td>                   
                     <td>Usun</td>
@@ -27,7 +28,8 @@
                 {
         <tr>
             <td>@account.Name</td>
-            <td>@account.Type</td>  
+            <td>@account.Type</td> 
+            <td>@account.Number</td>
             <td>@account.Balance</td>  
             <td>@account.CreationDate</td> 
             <td><a href="@Url.Action("Delete", "ouraccount", new { id = @account.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>

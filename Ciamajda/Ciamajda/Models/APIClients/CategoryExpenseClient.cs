@@ -40,7 +40,7 @@ namespace Ciamajda.Models.APIClients
                     BaseAddress = new Uri(Base_URL)
                 };
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = client.GetAsync("CategoryExpenses/getCategoryExpenses/" + id).Result;
+                HttpResponseMessage response = client.GetAsync("CategoryExpenses/GetCategoryExpense/" + id).Result;
 
                 if (response.IsSuccessStatusCode)
                     return response.Content.ReadAsAsync<CategoryExpense>().Result;
