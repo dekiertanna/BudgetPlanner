@@ -27,7 +27,7 @@ namespace Ciamajda.Controllers
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             AccountClient client = new AccountClient();
-            ViewBag.Placelist = client.GetAccountList(userId);
+            ViewBag.accountlist = client.GetAccountList(userId);
 
             return View();
         }
@@ -36,8 +36,17 @@ namespace Ciamajda.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            Account myModel = new Account();
+            ClaimsPrincipal currentUser = User;
 
-            return View("Create");
+            var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            myModel.UserId = userId;
+            myModel.CreationDate = DateTime.Now;
+            myModel.DiscardDate = DateTime.Now;
+            
+
+            return View(myModel);
+       
         }
 
         [HttpPost]
@@ -51,7 +60,7 @@ namespace Ciamajda.Controllers
 
         public ActionResult Delete(int id)
         {
-            AccountClient client = new AccountClient();
+            AccountClient client = new AccountClient();       
             client.Delete(id);
             return RedirectToAction("Index");
         }

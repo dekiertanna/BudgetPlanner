@@ -1,7 +1,40 @@
-﻿
+﻿@model Ciamajda.Models.ViewModels.AccountViewModel;
 @{
     ViewData["Title"] = "Index";
 }
+<h1>ZARZĄDZANIE KONTAMI</h1>
 
-<h1>WIDOK DO ZARZĄDZANIA KONTAMI -> lista kont to do!</h1>
+<div>
+    <a asp-action="Create">Dodaj konto</a>
+</div>
+@if (ViewBag.accountlist != null)
+{
+    <div class="table-responsive cart_info">
 
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <td>Nazwa</td>
+                    <td>Typ</td>
+                    <td>Saldo</td>
+                    <td>Data utworzenia</td>                   
+                    <td>Usun</td>
+                </tr>
+            </thead>
+            <tbody>
+
+    @foreach (var account in ViewBag.accountlist)
+                {
+        <tr>
+            <td>@account.Name</td>
+            <td>@account.Type</td>  
+            <td>@account.Balance</td>  
+            <td>@account.CreationDate</td> 
+            <td><a href="@Url.Action("Delete", "ouraccount", new { id = @account.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+        </tr>
+
+                }
+                </tbody>
+            </table>
+        </div>
+                }

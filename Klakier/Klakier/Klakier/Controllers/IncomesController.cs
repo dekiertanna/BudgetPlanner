@@ -119,6 +119,8 @@ namespace Klakier.Controllers
             return Ok(income);
         }
 
+
+
         private bool IncomeExists(int id)
         {
             return _context.Income.Any(e => e.Id == id);

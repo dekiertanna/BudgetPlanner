@@ -81,6 +81,7 @@ namespace Ciamajda.Controllers
         {
             IncomeClient client = new IncomeClient();
             client.Create(income);
+            refreshBalance(income.AccountId, income.Amount, 0, 'c');
             return RedirectToAction("Index");
         }
 
@@ -107,6 +108,8 @@ namespace Ciamajda.Controllers
         public ActionResult Delete(int id)
         {
             IncomeClient client = new IncomeClient();
+            Income income = client.Find(id);
+            refreshBalance(income.AccountId, income.Amount, 0, 'd');
             client.Delete(id);
             return RedirectToAction("Index");
         }
@@ -128,5 +131,41 @@ namespace Ciamajda.Controllers
                 return View();
             }
         }
+
+
+        public void refreshBalance(int id,decimal amount,decimal oldamount,char action) //action c=create e=edit d=delete
+        {
+            AccountClient ac = new AccountClient();
+            Account account = ac.Find(id);
+
+            if (action == 'c')
+            {
+                account.Income += amount;
+                account.Balance += amount;
+                
+            }
+            else
+            {
+                if(action == 'e')
+                {
+                  
+                    account.Income -= oldamount;
+                    account.Balance -= oldamount;
+                    account.Income += amount;
+                    account.Balance += amount;
+                }
+                else
+                {
+                    if(action =='d')
+                    {
+                        
+                        account.Income -= amount;
+                        account.Balance -= amount;
+                    }
+                }
+            }
+            ac.Edit(account);
+
+        }//refreshBalance()
     }
 }
