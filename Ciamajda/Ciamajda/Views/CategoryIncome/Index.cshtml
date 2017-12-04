@@ -1,0 +1,35 @@
+﻿@model Ciamajda.Models.ViewModels.CategoryIncomeViewModel
+
+<div>
+    <a asp-action="Create">Dodaj kategorie przychodu</a>
+</div>
+<div class="table-responsive cart_info">
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <td>Nazwa</td>
+                <td>Opis</td>
+                <td></td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.CategoryIncomelist != null)
+            {
+                @foreach (var category in ViewBag.CategoryIncomelist)
+                {
+                    <tr>
+                        <td>@category.Name</td>
+                        <td>@category.Description</td>
+
+                        <td><a href="@Url.Action("Delete", "CategoryIncome", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+
+                    </tr>
+
+                }
+            }
+
+        </tbody>
+    </table>
+</div>

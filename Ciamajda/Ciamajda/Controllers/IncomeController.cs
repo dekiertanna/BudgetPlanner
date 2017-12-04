@@ -61,7 +61,7 @@ namespace Ciamajda.Controllers
             }
             ViewBag.accountidlist = items;
 
-            List<SelectListItem> categorylist = vm.GetCategoryList(userId);
+            List<SelectListItem> categorylist = vm.GetCategoryIncomeList(userId);
             List<SelectListItem> categories = new List<SelectListItem>();
             foreach (var el in categorylist)
             {

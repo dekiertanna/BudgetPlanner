@@ -58,10 +58,10 @@ namespace Ciamajda.Models.ViewModels
             return types;
         }
 
-        public List<SelectListItem> GetCategoryList(string id)
+        public List<SelectListItem> GetCategoryExpenseList(string id)
         {
-            CategoryClient ac = new CategoryClient();
-            IEnumerable<Category> enumerable = ac.GetCategoryList(id);
+            CategoryExpenseClient ac = new CategoryExpenseClient();
+            IEnumerable<CategoryExpense> enumerable = ac.GetCategoryExpenseList(id);
             var types = new List<SelectListItem>();
             var iterator = 0;
             foreach (var el in enumerable)
@@ -95,8 +95,8 @@ namespace Ciamajda.Models.ViewModels
 
         public String GetCategoryName(int CategoryId)
         {
-            CategoryClient ac = new CategoryClient();
-            Category category = ac.Find(CategoryId);
+            CategoryExpenseClient ac = new CategoryExpenseClient();
+            CategoryExpense category = ac.Find(CategoryId);
             return category.Name;
         }
 
