@@ -1,9 +1,9 @@
 <!-- start Service Section -->
-<section id="pr_sec">
+
     <div class="container">
         <div class="row">
            
-            <div class="col align-self-center ">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                 <div class="title_sec">
 
                     <h1>Twoj portfel</h1>
@@ -31,14 +31,13 @@
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                             <div class="service">
-                                <i class="fa fa-globe"></i>
-                                <h2>@element.Name</h2>
-                                <div class="service_hoverly">
-                                    <i class="fa fa-globe"></i>
-                                    <h2>@element.Name</h2>
-                                    <p>Typ:@element.Type</p>
-                                    <p>Saldo:@element.Balance</p>
-                                </div>
+                                <i class="fa fa-usd"></i>
+                                <h2>@element.Name</h2>               
+                                <p>Typ:@element.Type</p>
+                                <p>Saldo:@element.Balance</p>
+                                <p>Numer konta<br>@element.Number</p>
+                                <p><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })">Szczegoly</a></p>
+                                
                             </div>
                         </div>
 
@@ -47,7 +46,7 @@
         </div>
              
    
-</section>
+
 <!-- End Service Section -->
 
 <div style="container" class="col-lg-8 col-md-8 col-sm-8 col-xs12 ">

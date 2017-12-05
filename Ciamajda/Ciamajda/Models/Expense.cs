@@ -1,19 +1,19 @@
-﻿using Ciamajda.Models.APIClients;
+﻿using Ciamajda.Models;
+using Ciamajda.Models.APIClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Ciamajda
 {
-    public partial class Expense
+    public partial class Expense :Flow
     {
         public int Id { get; set; }
         [Display(Name = "Kwota")]
         public decimal Amount { get; set; }
         [Display(Name = "Miejsce")]
         public int Place { get; set; }
-        [Display(Name = "Czas")]
-        public DateTime Time { get; set; }
+       
         [Display(Name = "Wydatek cykliczny")]
         public bool IsCyclical { get; set; }
         [Display(Name = "Długość cyklu")]

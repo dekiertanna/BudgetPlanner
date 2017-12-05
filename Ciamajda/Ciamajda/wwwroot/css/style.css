@@ -496,8 +496,9 @@ transition: all 1s ease 0s;
 	-moz-transition: all 1s ease 0s;
 	-webkit-transition: all 1s ease 0s;border :1px solid #03B0F0;
 display : none;
-padding : 25px 5px;
+padding : 25px;
 position : absolute;
+width:auto;
 top : 0;
 background : #fff;
 }

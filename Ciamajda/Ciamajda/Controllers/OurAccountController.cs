@@ -85,6 +85,18 @@ namespace Ciamajda.Controllers
         // GET: OurAccount/Details/5
         public ActionResult Details(int id)
         {
+            ExpenseClient ex = new ExpenseClient();
+            IncomeClient inc = new IncomeClient();
+            List<int> accounts = new List<int>();
+            accounts.Add(id);
+            List<Flow> flows = new List<Flow>();
+            ViewBag.exp = ex.FindAll(accounts);
+            ViewBag.inc = inc.FindAll(accounts);
+            flows.AddRange(ex.FindAll(accounts));
+            flows.AddRange(inc.FindAll(accounts));
+            flows.Sort(new DateTimeComparator());
+            ViewBag.list = flows;
+            ViewBag.size = flows.Count;
             return View();
         }
     }
