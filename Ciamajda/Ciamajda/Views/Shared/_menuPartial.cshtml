@@ -32,7 +32,7 @@
                 <ul class="active">
                    @foreach(var element in ViewBag.AccountList)
                     {
-                       <li><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })" class="btn btn-primary btn-lg"></a>@element.Name</li>
+                        <li><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })" class="btn btn-primary">@element.Name</a></li>
                     }
                 </ul>
             </li>

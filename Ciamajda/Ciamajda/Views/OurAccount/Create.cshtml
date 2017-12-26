@@ -10,14 +10,17 @@
             <tr>
                 <td> @Html.LabelFor(model => model.Name) </td>
                 <td>@Html.TextBoxFor(model => model.Name) </td>
+                <td>@Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Type) </td>
                 <td>@Html.TextBoxFor(model => model.Type) </td>
+                <td>@Html.ValidationMessageFor(model => model.Type, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Number) </td>
                 <td>@Html.TextBoxFor(model => model.Number) </td>
+                <td>@Html.ValidationMessageFor(model => model.Number, "", new { @style = "color:red" }) </td>
             </tr>
                     @Html.EditorFor(model => model.CreationDate)
                     @Html.EditorFor(model => model.DiscardDate)
