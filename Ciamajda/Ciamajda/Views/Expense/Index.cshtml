@@ -42,7 +42,16 @@
                     <td>@ViewBag.expenseviewmodel.GetAccountName(@expense.AccountId)</td>
                     <td>@ViewBag.expenseviewmodel.GetCategoryName(@expense.CategoryId)</td>
                     <td>@ViewBag.expenseviewmodel.GetPlaceName(@expense.Place)</td>
-                    <td>@expense.Time</td>
+
+                    @if (expense.Time >= DateTime.Now)
+                    {
+                        <td style="color:red;">@expense.Time</td>
+                    }
+                    else
+                    {
+                       <td>@expense.Time</td>
+                    }
+
                     <td>@expense.Description</td>
                     <td><a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
                    
