@@ -99,9 +99,54 @@ namespace Klakier.Controllers
 
             _context.Expense.Add(expense);
 
+            if (expense.IsCyclical)
+            {
+                var time = expense.Time;
+                for (int i = 0; i < expense.DaysCycle-1; i++)
+                {
+                    time = GetNextCycleTime(time, expense.CycleType);
+                    var cyclicExpense = new Expense()
+                    {
+                        Time = time,
+                        AccountId = expense.AccountId,
+                        DaysCycle = expense.DaysCycle,
+                        IsCyclical = expense.IsCyclical,
+                        Amount = expense.Amount,
+                        CategoryId = expense.CategoryId,
+                        CycleType = expense.CycleType,
+                        CurrencyCurrency = expense.CurrencyCurrency,
+                        Description = expense.Description,
+                        Title = expense.Title,
+                        Place = expense.Place
+                    };
+                    
+                    _context.Expense.Add(cyclicExpense);
+                }
+            }
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetExpense", new { id = expense.Id }, expense);
+        }
+
+        private DateTime GetNextCycleTime(DateTime expenseTime, int? expenseCycleType)
+        {
+            if (expenseCycleType == 1)
+            {
+                return expenseTime.AddDays(7);
+            }
+
+            if (expenseCycleType == 2)
+            {
+                return expenseTime.AddMonths(1);
+            }
+
+            if (expenseCycleType == 3)
+            {
+                return expenseTime.AddMonths(3);
+            }
+
+            return expenseTime.AddYears(1);
         }
 
         // DELETE: api/Expenses/5

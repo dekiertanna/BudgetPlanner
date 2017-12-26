@@ -59,13 +59,24 @@
         <tr>
             <td>@Html.LabelFor(model => model.Expense.IsCyclical) </td>
 
-            <td>@Html.TextBoxFor(model => model.Expense.IsCyclical) </td>
+            <td>@Html.CheckBoxFor(model => model.Expense.IsCyclical, false) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.DaysCycle) </td>
 
             <td>@Html.TextBoxFor(model => model.Expense.DaysCycle) </td>
         </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Expense.CycleType) </td>
+
+            <td>
+                @Html.DropDownListFor(model => model.Expense.CycleType, new SelectListItem[]{
+                    new SelectListItem() {Text = "Tygodniowy", Value="1"},
+                    new SelectListItem() {Text = "Miesięczny", Value="2"},
+                    new SelectListItem() {Text = "3-miesięczny", Value="3"},
+                    new SelectListItem() {Text = "Roczny", Value="4"}})
+            </td>
+        </tr>    
         <tr>
             <td>@Html.LabelFor(model => model.Expense.Time) </td>
 
@@ -93,3 +104,24 @@
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }
+
+<script>
+    $(document).ready(function () {
+        $('#Expense_IsCyclical').change(function () {
+            OnIsCyclicalChange();
+        });
+        
+        OnIsCyclicalChange();
+    });
+    function OnIsCyclicalChange() {
+        if ($('#Expense_IsCyclical').prop('checked')) {
+            $('#Expense_DaysCycle').attr("disabled", false);
+            $('#Expense_CycleType').attr("disabled", false);
+        } else {
+            $('#Expense_DaysCycle').attr("disabled", true);
+            $('#Expense_CycleType').attr("disabled", true);
+            $('#Expense_DaysCycle').val(null);
+            $('#Expense_CycleType').val(null);
+        }
+    }
+</script>
