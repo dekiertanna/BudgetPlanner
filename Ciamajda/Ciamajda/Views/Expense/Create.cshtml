@@ -15,38 +15,33 @@
            
 
             <tr>
-                <td> @Html.LabelFor(model => model.Expense.Title) </td>
+                <td>@Html.LabelFor(model => model.Expense.Title) </td>
                 <td>@Html.TextBoxFor(model => model.Expense.Title) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Expense.Amount) </td>
                 <td>@Html.TextBoxFor(model => model.Expense.Amount) </td>
+                <td>@Html.ValidationMessageFor(model => model.Expense.Amount) </td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(model => model.Expense.CurrencyCurrency)</td>
                 <td>
                     @Html.DropDownListFor(model => model.Expense.CurrencyCurrency, new SelectListItem[]{
-                new SelectListItem() {Text = "PLN", Value="PLN"},
-                new SelectListItem() {Text = "GBP", Value="GBP"},
-                new SelectListItem() {Text = "EUR", Value="EUR"},
-                new SelectListItem() {Text = "USD", Value="USD"}})
-            </td>
+                        new SelectListItem() {Text = "PLN", Value="PLN"},
+                        new SelectListItem() {Text = "GBP", Value="GBP"},
+                        new SelectListItem() {Text = "EUR", Value="EUR"},
+                        new SelectListItem() {Text = "USD", Value="USD"}})
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.Expense.CurrencyCurrency) </td>
         </tr>
 
 
         <tr>
             <td>@Html.LabelFor(model => model.Expense.AccountId) </td>
             <td>
-
-             @Html.DropDownListFor(model=>model.Expense.AccountId,new SelectList(ViewBag.accountidlist,"Value","Text"))
-
-
-
-
-
-
-
+                @Html.DropDownListFor(model=>model.Expense.AccountId,new SelectList(ViewBag.accountidlist,"Value","Text"))
             </td>
+            <td>@Html.ValidationMessageFor(model => model.Expense.AccountId) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.CategoryId) </td>
@@ -58,38 +53,35 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.IsCyclical) </td>
-
             <td>@Html.CheckBoxFor(model => model.Expense.IsCyclical, false) </td>
+            <td>@Html.ValidationMessageFor(model => model.Expense.IsCyclical) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.DaysCycle) </td>
-
             <td>@Html.TextBoxFor(model => model.Expense.DaysCycle) </td>
+            <td>@Html.ValidationMessageFor(model => model.Expense.DaysCycle) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.CycleType) </td>
-
             <td>
                 @Html.DropDownListFor(model => model.Expense.CycleType, new SelectListItem[]{
                     new SelectListItem() {Text = "Tygodniowy", Value="1"},
                     new SelectListItem() {Text = "Miesięczny", Value="2"},
                     new SelectListItem() {Text = "3-miesięczny", Value="3"},
-                    new SelectListItem() {Text = "Roczny", Value="4"}})
+                    new SelectListItem() {Text = "Roczny", Value="4"}}, "-please select-",new{})
             </td>
+            <td>@Html.ValidationMessageFor(model => model.Expense.CycleType) </td>
         </tr>    
         <tr>
             <td>@Html.LabelFor(model => model.Expense.Time) </td>
-
             <td>@Html.TextBoxFor(model=>model.Expense.Time, new { @id = "example1",@name="datetimepicker",@class="datetimepicker",@type="date" })
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(model => model.Expense.Description) </td>
-                <td>@Html.TextAreaFor(model=>model.Expense.Description) </td>
-            </tr>
-
+            <td>@Html.ValidationMessageFor(model => model.Expense.Time) </td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(model => model.Expense.Description) </td>
+            <td>@Html.TextAreaFor(model=>model.Expense.Description) </td>
+        </tr>
                 <tr>
-                    
-
                     <td><input type="submit" value="Save" class="btn btn-default" /></td>
                 </tr>
         </table>

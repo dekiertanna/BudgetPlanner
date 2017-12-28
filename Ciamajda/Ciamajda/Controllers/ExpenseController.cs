@@ -41,9 +41,9 @@ namespace Ciamajda.Controllers
 
         // GET: Expense/Create
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(ExpenseViewModel model = null )
         {
-            ExpenseViewModel vm = new ExpenseViewModel();
+            ExpenseViewModel vm = model ?? new ExpenseViewModel();
             ClaimsPrincipal currentUser = User;
            
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -81,6 +81,13 @@ namespace Ciamajda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Expense expense)
         {
+            if (!ModelState.IsValid)
+            {
+                return Create(new ExpenseViewModel()
+                {
+                    Expense = expense
+                });
+            }
             ExpenseClient client = new ExpenseClient();
             client.Create(expense);
             refreshBalance(expense.AccountId, expense.Amount, 0, 'c');
