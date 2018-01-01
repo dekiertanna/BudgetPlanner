@@ -46,9 +46,9 @@ namespace Ciamajda.Controllers
         }
 
         // GET: Income/Create
-        public ActionResult Create()
+        public ActionResult Create(IncomeViewModel model = null)
         {
-            IncomeViewModel vm = new IncomeViewModel();
+            IncomeViewModel vm = model ?? new IncomeViewModel();
             ClaimsPrincipal currentUser = User;
 
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -79,6 +79,15 @@ namespace Ciamajda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Income income)
         {
+            if (!ModelState.IsValid)
+            {
+                return Create(new IncomeViewModel()
+                {
+                    Income = income
+                });
+
+            }
+
             IncomeClient client = new IncomeClient();
             client.Create(income);
             refreshBalance(income.AccountId, income.Amount, 0, 'c');

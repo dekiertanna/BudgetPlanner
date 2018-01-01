@@ -42,7 +42,14 @@
                         <td>@income.CurrencyCurrency</td>
                         <td>@ViewBag.incomeviewmodel.GetAccountName(@income.AccountId)</td>
                         <td>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>                      
-                        <td>@income.Time</td>
+                        @if (income.Time >= DateTime.Now)
+                        {
+                            <td style="color:red;">@income.Time</td>
+                        }
+                        else
+                        {
+                            <td>@income.Time</td>
+                        }
                         <td>@income.Description</td>
                         <td><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 

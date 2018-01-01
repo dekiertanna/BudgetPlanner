@@ -12,75 +12,86 @@
     @using (Html.BeginForm("create", "Income", FormMethod.Post))
     {
         <table class="table">
-
-
             <tr>
                 <td> @Html.LabelFor(model => model.Income.Title) </td>
                 <td>@Html.TextBoxFor(model => model.Income.Title) </td>
+                <td></td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Income.Amount) </td>
                 <td>@Html.TextBoxFor(model => model.Income.Amount) </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.Amount, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(model => model.Income.CurrencyCurrency)</td>
                 <td>
                     @Html.DropDownListFor(model => model.Income.CurrencyCurrency, new SelectListItem[]{
-                new SelectListItem() {Text = "PLN", Value="PLN"},
-                new SelectListItem() {Text = "GBP", Value="GBP"},
-                new SelectListItem() {Text = "EUR", Value="EUR"},
-                new SelectListItem() {Text = "USD", Value="USD"}})
+                        new SelectListItem() {Text = "PLN", Value="PLN"},
+                        new SelectListItem() {Text = "GBP", Value="GBP"},
+                        new SelectListItem() {Text = "EUR", Value="EUR"},
+                        new SelectListItem() {Text = "USD", Value="USD"}})
                 </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.CurrencyCurrency, "", new { @style = "color:red" }) </td>
             </tr>
-
-
             <tr>
                 <td>@Html.LabelFor(model => model.Income.AccountId) </td>
                 <td>
-
-                    @Html.DropDownListFor(model => model.Income.AccountId, new SelectList(ViewBag.accountidlist, "Value", "Text"))
-
-
-
-
-
-
-
+                    @Html.DropDownListFor(model => model.Income.AccountId,
+                        new SelectList(ViewBag.accountidlist, "Value", "Text"),
+                        "-Wybierz-",
+                        new { })
                 </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.AccountId, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(model => model.Income.CategoryId) </td>
-                <td>@Html.DropDownListFor(model => model.Income.CategoryId, new SelectList(ViewBag.categorylist, "Value", "Text")) </td>
+                <td>@Html.DropDownListFor(model => model.Income.CategoryId, 
+                        new SelectList(ViewBag.categorylist, "Value", "Text"),
+                        "-Wybierz-",
+                        new { }) </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.CategoryId, "", new { @style = "color:red" }) </td>
             </tr>
           
             <tr>
                 <td>@Html.LabelFor(model => model.Income.IsCyclical) </td>
-
-                <td>@Html.TextBoxFor(model => model.Income.IsCyclical) </td>
+                <td>@Html.CheckBoxFor(model => model.Income.IsCyclical, false) </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.IsCyclical, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(model => model.Income.DaysCycle) </td>
-
                 <td>@Html.TextBoxFor(model => model.Income.DaysCycle) </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.DaysCycle, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
+                <td>@Html.LabelFor(model => model.Income.CycleType) </td>
+                <td>
+                    @Html.DropDownListFor(model => model.Income.CycleType, new SelectListItem[]{
+                        new SelectListItem() {Text = "Tygodniowy", Value="1"},
+                        new SelectListItem() {Text = "Miesięczny", Value="2"},
+                        new SelectListItem() {Text = "3-miesięczny", Value="3"},
+                        new SelectListItem() {Text = "Roczny", Value="4"}},
+                        "-Wybierz-",
+                        new {})
+                </td>
+                <td>@Html.ValidationMessageFor(model => model.Income.CycleType, "", new { @style = "color:red" }) </td>
+            </tr> 
+            <tr>
                 <td>@Html.LabelFor(model => model.Income.Time) </td>
-
                 <td>@Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @name = "datetimepicker", @class = "datetimepicker", @type = "date" })
+                <td>@Html.ValidationMessageFor(model => model.Income.Time, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Income.Description) </td>
                 <td>@Html.TextAreaFor(model => model.Income.Description) </td>
+                <td></td>
             </tr>
-
             <tr>
-
-
                 <td><input type="submit" value="Save" class="btn btn-default" /></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
     }
 </div>
 
@@ -90,3 +101,24 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script>
+    $(document).ready(function () {
+        $('#Income_IsCyclical').change(function () {
+            OnIsCyclicalChange();
+        });
+
+        OnIsCyclicalChange();
+    });
+    function OnIsCyclicalChange() {
+        if ($('#Income_IsCyclical').prop('checked')) {
+            $('#Income_DaysCycle').attr("disabled", false);
+            $('#Income_CycleType').attr("disabled", false);
+        } else {
+            $('#Income_DaysCycle').attr("disabled", true);
+            $('#Income_CycleType').attr("disabled", true);
+            $('#Income_DaysCycle').val(null);
+            $('#Income_CycleType').val(null);
+        }
+    }
+</script>
