@@ -12,8 +12,6 @@
     @using (Html.BeginForm("create", "Expense", FormMethod.Post))
     {
         <table class="table">
-           
-
             <tr>
                 <td>@Html.LabelFor(model => model.Expense.Title) </td>
                 <td>@Html.TextBoxFor(model => model.Expense.Title) </td>
@@ -35,8 +33,6 @@
                 </td>
                 <td>@Html.ValidationMessageFor(model => model.Expense.CurrencyCurrency, "", new { @style = "color:red" }) </td>
         </tr>
-
-
         <tr>
             <td>@Html.LabelFor(model => model.Expense.AccountId) </td>
             <td>
@@ -54,7 +50,7 @@
                     "-Wybierz-",
                     new { })
             </td>
-            <td></td>
+            <td>@Html.ValidationMessageFor(model => model.Expense.CategoryId, "", new { @style = "color:red" }) </td>
         </tr>
         <tr>
             <td>@Html.LabelFor(model => model.Expense.Place) </td>
@@ -103,7 +99,6 @@
                 </tr>
         </table>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
     }
     </div>
 

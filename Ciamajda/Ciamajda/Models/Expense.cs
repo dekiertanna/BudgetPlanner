@@ -35,6 +35,7 @@ namespace Ciamajda
         [Display(Name = "Waluta")]
         public string CurrencyCurrency { get; set; }
 
+        [Required(ErrorMessage = "Pole jest wymagane")]
         [Display(Name = "Kategoria")]
         public int CategoryId { get; set; }
 
