@@ -11,25 +11,22 @@
     @using (Html.BeginForm("create", "CategoryExpense", FormMethod.Post))
     {
         <table class="table">
-
-
             <tr>
                 <td> @Html.LabelFor(model => model.Name) </td>
                 <td>@Html.TextBoxFor(model => model.Name) </td>
+                <td>@Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" }) </td>
             </tr>
-
-
             <tr>
                 <td> @Html.LabelFor(model => model.Description) </td>
                 <td>@Html.TextAreaFor(model => model.Description) </td>
-                @Html.EditorFor(model => model.UserId)
+                <td></td>
             </tr>
-
             <tr>
-
-
                 <td><input type="submit" value="Save" class="btn btn-default" /></td>
+                <td></td>
+                <td></td>
             </tr>
+            @Html.EditorFor(model => model.UserId)
         </table>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
