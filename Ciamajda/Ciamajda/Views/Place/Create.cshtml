@@ -16,30 +16,29 @@
             <tr>
                 <td> @Html.LabelFor(model => model.Name) </td>
                 <td>@Html.TextBoxFor(model => model.Name) </td>
+                <td>@Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Street) </td>
-                <td>@Html.TextAreaFor(model => model.Street) </td>
+                <td>@Html.TextBoxFor(model => model.Street) </td>
+                <td>@Html.ValidationMessageFor(model => model.Street, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.City) </td>
-                <td>@Html.TextAreaFor(model => model.City) </td>
+                <td>@Html.TextBoxFor(model => model.City) </td>
+                <td>@Html.ValidationMessageFor(model => model.City, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Number) </td>
-                <td>@Html.TextAreaFor(model => model.Number) </td>
+                <td>@Html.TextBoxFor(model => model.Number) </td>
+                <td>@Html.ValidationMessageFor(model => model.Number, "", new { @style = "color:red" }) </td>
             </tr>
             @Html.EditorFor(model =>model.UserId)
 
-           
-
-
-
-
             <tr>
-
-
                 <td><input type="submit" value="Save" class="btn btn-default" /></td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
