@@ -36,27 +36,28 @@
                 @if (ViewBag.expenselist != null)
                 {
                     @foreach (var expense in ViewBag.expenselist)
-                    {<tr>
-                    <td>@expense.Title</td>
-                    <td>@expense.Amount</td>
-                    <td>@expense.CurrencyCurrency</td>
-                    <td>@ViewBag.expenseviewmodel.GetAccountName(@expense.AccountId)</td>
-                    <td>@ViewBag.expenseviewmodel.GetCategoryName(@expense.CategoryId)</td>
-                    <td>@ViewBag.expenseviewmodel.GetPlaceName(@expense.Place)</td>
-
-                    @if (expense.Time >= DateTime.Now)
                     {
-                        <td style="color:red;">@expense.Time.ToString("yyyy-MM-dd")</td>
-                    }
-                    else
-                    {
-                       <td>@expense.Time.ToString("yyyy-MM-dd")</td>
-                    }
+                        
+                    <tr>
+                        <td class='@(@expense.Time>= DateTime.Now) '>@expense.Title</td>
+                        <td class='@(@expense.Time>= DateTime.Now) ' style="text-align:right;">@expense.Amount</td>
+                        <td class='@(@expense.Time>= DateTime.Now) ' >@expense.CurrencyCurrency</td>
+                        <td class='@(@expense.Time>= DateTime.Now) ' >@ViewBag.expenseviewmodel.GetAccountName(@expense.AccountId)</td>
+                        <td class='@(@expense.Time>= DateTime.Now) ' >@ViewBag.expenseviewmodel.GetCategoryName(@expense.CategoryId)</td>
+                        <td class='@(@expense.Time>= DateTime.Now) '>@ViewBag.expenseviewmodel.GetPlaceName(@expense.Place)</td>
 
-                    <td>@expense.Description</td>
-                    <td><a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
-                    <td><a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
-                   
+                        @if (expense.Time >= DateTime.Now)
+                        {
+                            <td class="True" style="color:red;">@expense.Time.ToString("yyyy-MM-dd")</td>
+                        }
+                        else
+                        {
+                           <td>@expense.Time.ToString("yyyy-MM-dd")</td>
+                        }
+
+                        <td  class='@(@expense.Time>= DateTime.Now) '>@expense.Description</td>
+                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
                     </tr>
 
                     }
@@ -65,4 +66,10 @@
                 </tbody>
             </table>
         </div>
+
+<script>
+    $(document).ready(function () {
+        $('.True').css('background-color', 'lightGray');
+        });
+</script>
     
