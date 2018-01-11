@@ -46,11 +46,11 @@
 
                     @if (expense.Time >= DateTime.Now)
                     {
-                        <td style="color:red;">@expense.Time</td>
+                        <td style="color:red;">@expense.Time.ToString("yyyy-MM-dd")</td>
                     }
                     else
                     {
-                       <td>@expense.Time</td>
+                       <td>@expense.Time.ToString("yyyy-MM-dd")</td>
                     }
 
                     <td>@expense.Description</td>
