@@ -12,7 +12,8 @@
                 <td>Ulica</td>
                 <td>Miasto</td>
                 <td>Nr budynku</td>
-
+                <td>Edytuj</td>
+                <td>Usun</td>
             </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
                         <td>@Place.City</td>
                         <td>@Place.Number</td>
 
+                        <td><a href="@Url.Action("Edit", "Place", new { id = @Place.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
                         <td><a href="@Url.Action("Delete", "Place", new { id = @Place.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 
                     </tr>
