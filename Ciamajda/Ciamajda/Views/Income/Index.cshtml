@@ -38,22 +38,22 @@
             @foreach (var income in ViewBag.incomeList)
             {
                     <tr>
-                        <td>@income.Title</td>
-                        <td>@income.Amount</td>
-                        <td>@income.CurrencyCurrency</td>
-                        <td>@ViewBag.incomeviewmodel.GetAccountName(@income.AccountId)</td>
-                        <td>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>                      
+                        <td class='@(@income.Time>= DateTime.Now) '>@income.Title</td>
+                        <td class='@(@income.Time>= DateTime.Now) ' style="text-align:right;">@income.Amount</td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@income.CurrencyCurrency</td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@ViewBag.incomeviewmodel.GetAccountName(@income.AccountId)</td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>                      
                         @if (income.Time >= DateTime.Now)
                         {
-                            <td style="color:red;">@income.Time.ToString("yyyy-MM-dd")</td>
+                            <td class="True" style="color:red;">@income.Time.ToString("yyyy-MM-dd")</td>
                         }
                         else
                         {
                             <td>@income.Time.ToString("yyyy-MM-dd")</td>
                         }
-                        <td>@income.Description</td>
-                        <td><a href="@Url.Action("Edit", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@income.Description</td>
+                        <td class='@(@income.Time>= DateTime.Now) '><a href="@Url.Action("Edit", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td class='@(@income.Time>= DateTime.Now) '><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 
                     </tr>
 
@@ -63,3 +63,10 @@
         </tbody>
     </table>
 </div>
+
+
+<script>
+    $(document).ready(function () {
+        $('.True').css('background-color', 'lightGray');
+    });
+</script>
