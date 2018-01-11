@@ -1,7 +1,11 @@
 ﻿@model Ciamajda.Models.ViewModels.PlaceViewModel
 
 <div>
-    <a asp-action="Create">Dodaj miejsca</a>
+    <h4 style="text-align: center">
+        Miejsca
+        <a asp-action="Create" title="Dodaj nowe miejsce" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
 </div>
 <div class="table-responsive cart_info">
 
@@ -12,6 +16,7 @@
                 <td>Ulica</td>
                 <td>Miasto</td>
                 <td>Nr budynku</td>
+                <td>Akcje</td>
 
             </tr>
         </thead>
@@ -26,7 +31,7 @@
                         <td>@Place.City</td>
                         <td>@Place.Number</td>
 
-                        <td><a href="@Url.Action("Delete", "Place", new { id = @Place.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td><a href="@Url.Action("Delete", "Place", new { id = @Place.Id })" class="btn btn-primary fa fa-times"></a></td>
 
                     </tr>
 

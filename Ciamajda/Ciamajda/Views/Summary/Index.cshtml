@@ -36,7 +36,7 @@
                                 <p>Typ:@element.Type</p>
                                 <p>Saldo:@element.Balance</p>
                                 <p>Numer konta<br>@element.Number</p>
-                                <p><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })">Szczegoly</a></p>
+                                <p><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })">Szczegó³y</a></p>
                                 
                             </div>
                         </div>
@@ -48,42 +48,6 @@
    
 
 <!-- End Service Section -->
-
-<div style="container" class="col-lg-8 col-md-8 col-sm-8 col-xs12 ">
-
-    <!-- start progress bar Section -->
-    <section id="skill_sec">
-        <div>
-            <div class="row">
-                <div >
-                    
-                </div>
-                <div class="skills progress-bar1">
-                    <ul class="col-md-6 col-sm-12 col-xs-12 wow ">
-                        <li class="progress">
-                            <div class="progress-bar" data-width="85">
-                                Przychody
-                            </div>
-                        </li>
-                        <li class="progress">
-                            <div class="progress-bar" data-width="65">
-                                Wydatki
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-
-            </div>
-        </div>
-      
-     
-    </section>
-    <!-- End progress bar Section -->
-</div>
-
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

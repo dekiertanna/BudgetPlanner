@@ -16,12 +16,12 @@
                 <li class="day">
                     <div class="events">
 
-                       
+
                         <p>@el.Title</p>
-                        
-                       
+
+
                         @if (el is Expense)
-                {
+                        {
                             <p style="color:red">-@el.Amount@el.CurrencyCurrency</p>
                             <p><a href="@Url.Action("Details", "Expense", new { id = @el.Id })">Szczegoly</a></p>
                         }
@@ -32,22 +32,12 @@
 
                         }
 
-                        <div class="date">@el.Time.ToString("dd MMMM, yyyy")
+                        <div class="date">
+                            @el.Time.ToString("dd MMMM, yyyy")
                         </div>
                     </div>
                 </li>
-
-
             }
         </ul>
     </div>
-
-
-
-
-   
-
-</div>
-<div>
-    <a asp-controller="Home" asp-action="Index">HomePage</a>
 </div>
