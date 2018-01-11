@@ -33,7 +33,7 @@ namespace Ciamajda.Controllers
             {
                 accounts.Add(el.Id);
             }
-            ViewBag.incomelist = client.FindAll(accounts);
+            ViewBag.incomelist = client.FindAll(accounts).OrderByDescending(x => x.Time);
           
             ViewBag.incomeviewmodel = md;
             return View();
