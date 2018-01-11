@@ -28,6 +28,7 @@
                       <td>Miejsce</td>
                       <td>Czas</td>
                       <td>Opis</td>
+                      <td>Edytuj</td>
                       <td>Usun</td>
                     </tr>
                 </thead>
@@ -53,6 +54,7 @@
                     }
 
                     <td>@expense.Description</td>
+                    <td><a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
                     <td><a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
                    
                     </tr>
