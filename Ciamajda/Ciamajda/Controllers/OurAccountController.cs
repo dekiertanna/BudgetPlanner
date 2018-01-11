@@ -65,20 +65,19 @@ namespace Ciamajda.Controllers
             client.Delete(id);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int id)
         {
             AccountClient client = new AccountClient();
             AccountViewModel CVM = new AccountViewModel();
             CVM.Account = client.Find(id);
-            return View("Edit", CVM);
+            return View("Edit", CVM.Account);
         }
         [HttpPost]
-        public ActionResult Edit(AccountViewModel CVM)
+        public ActionResult Edit(Account CVM)
         {
             AccountClient client = new AccountClient();
-            client.Edit(CVM.Account);
+            client.Edit(CVM);
             return RedirectToAction("Index");
         }
 

@@ -1,5 +1,6 @@
 ﻿@model Ciamajda.Models.ViewModels.CategoryExpenseViewModel
-
+    
+<h2>Kategorie wydatków</h2>
 <div>
     <a asp-action="Create">Dodaj kategorie wydatku</a>
 </div>
@@ -11,6 +12,8 @@
                 <td>Nazwa</td>
                 <td>Opis</td>
                 <td></td>
+                <td>Edytuj</td>
+                <td>Usun</td>
 
             </tr>
         </thead>
@@ -22,7 +25,8 @@
                     <tr>
                         <td>@category.Name</td>
                         <td>@category.Description</td>
-
+                        <td></td>
+                        <td><a href="@Url.Action("Edit", "CategoryExpense", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
                         <td><a href="@Url.Action("Delete", "CategoryExpense", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 
                     </tr>

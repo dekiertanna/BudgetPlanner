@@ -9,7 +9,7 @@
 }
 <h2>Dodaj przychod</h2>
 <div align="center">
-    @using (Html.BeginForm("create", "Income", FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Income", FormMethod.Post))
     {
         <table class="table">
             <tr>
@@ -77,12 +77,13 @@
             </tr> 
             <tr>
                 <td>@Html.LabelFor(model => model.Income.Time) </td>
-                <td>@Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @class = "datepicker"})
-<td>@Html.ValidationMessageFor(model => model.Income.Time, "", new { @style = "color:red" }) </td>
+                <td>@Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @class = "datepicker", value = Model.Income.Time.ToString("YYYY-MM-DD") })
+                <td>@Html.ValidationMessageFor(model => model.Income.Time, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Income.Description) </td>
                 <td>@Html.TextAreaFor(model => model.Income.Description) </td>
+                <td>@Html.HiddenFor(model => model.Income.Id) </td>
                 <td></td>
             </tr>
             <tr>

@@ -28,6 +28,7 @@
                 <td>Kategoria</td>
                 <td>Czas</td>
                 <td>Opis</td>
+                <td>Edytuj</td>
                 <td>Usun</td>
             </tr>
         </thead>
@@ -44,13 +45,14 @@
                         <td>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>                      
                         @if (income.Time >= DateTime.Now)
                         {
-                            <td style="color:red;">@income.Time</td>
+                            <td style="color:red;">@income.Time.ToString("yyyy-MM-dd")</td>
                         }
                         else
                         {
-                            <td>@income.Time</td>
+                            <td>@income.Time.ToString("yyyy-MM-dd")</td>
                         }
                         <td>@income.Description</td>
+                        <td><a href="@Url.Action("Edit", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
                         <td><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
 
                     </tr>

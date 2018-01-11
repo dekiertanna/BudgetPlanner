@@ -48,6 +48,14 @@ namespace Ciamajda.Controllers
         // GET: Income/Create
         public ActionResult Create(IncomeViewModel model = null)
         {
+            PrepareLookups(model);
+
+            
+            return View("Create");
+        }
+
+        private void PrepareLookups(IncomeViewModel model)
+        {
             IncomeViewModel vm = model ?? new IncomeViewModel();
             ClaimsPrincipal currentUser = User;
 
@@ -69,9 +77,6 @@ namespace Ciamajda.Controllers
             }
 
             ViewBag.categorylist = categories;
-
-            
-            return View("Create");
         }
 
         // POST: Income/Create
@@ -100,6 +105,7 @@ namespace Ciamajda.Controllers
             IncomeClient client = new IncomeClient();
             IncomeViewModel CVM = new IncomeViewModel();
             CVM.Income = client.Find(id);
+            PrepareLookups(CVM);
             return View("Edit", CVM);
         }
 
