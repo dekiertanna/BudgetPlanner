@@ -77,8 +77,8 @@
             </tr> 
             <tr>
                 <td>@Html.LabelFor(model => model.Income.Time) </td>
-                <td>@Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @name = "datetimepicker", @class = "datetimepicker", @type = "date" })
-                <td>@Html.ValidationMessageFor(model => model.Income.Time, "", new { @style = "color:red" }) </td>
+                <td>@Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @class = "datepicker"})
+<td>@Html.ValidationMessageFor(model => model.Income.Time, "", new { @style = "color:red" }) </td>
             </tr>
             <tr>
                 <td> @Html.LabelFor(model => model.Income.Description) </td>
@@ -109,6 +109,7 @@
         });
 
         OnIsCyclicalChange();
+        $('.datepicker').datepicker();
     });
     function OnIsCyclicalChange() {
         if ($('#Income_IsCyclical').prop('checked')) {

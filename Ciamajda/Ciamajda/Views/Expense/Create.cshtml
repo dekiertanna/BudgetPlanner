@@ -86,8 +86,8 @@
         </tr>    
         <tr>
             <td>@Html.LabelFor(model => model.Expense.Time) </td>
-            <td>@Html.TextBoxFor(model=>model.Expense.Time, new { @id = "example1",@name="datetimepicker",@class="datetimepicker",@type="date" })
-            <td>@Html.ValidationMessageFor(model => model.Expense.Time, "", new { @style = "color:red" }) </td>
+            <td>@Html.TextBoxFor(model => model.Expense.Time, new { @id = "example1", @class = "datepicker"})
+<td>@Html.ValidationMessageFor(model => model.Expense.Time, "", new { @style = "color:red" }) </td>
         </tr>
         <tr>
             <td> @Html.LabelFor(model => model.Expense.Description) </td>
@@ -116,6 +116,7 @@
         });
         
         OnIsCyclicalChange();
+        $('.datepicker').datepicker();
     });
     function OnIsCyclicalChange() {
         if ($('#Expense_IsCyclical').prop('checked')) {
