@@ -5,10 +5,14 @@
 }
 
 
-
 <div>
-    <h4>Szczegóły konta</h4>
+    <h4 style="text-align: center">
+        Szczegóły konta 
+        <a asp-action="Index" title="Powrót" style="float: left" class="fa fa-arrow-left"></a>
+    </h4>
     <hr />
+</div>
+<div>
     <div class="timeline">
         <ul class="days">
             @foreach (var el in ViewBag.list)
@@ -16,20 +20,19 @@
                 <li class="day">
                     <div class="events">
 
-
+                        
                         <p>@el.Title</p>
 
 
                         @if (el is Expense)
                         {
                             <p style="color:red">-@el.Amount@el.CurrencyCurrency</p>
-                            <p><a href="@Url.Action("Details", "Expense", new { id = @el.Id })">Szczegoly</a></p>
+                          <!--<p><a href="@Url.Action("Details", "Expense", new { id = @el.Id })">Szczegoly</a></p>-->
                         }
                         else
                         {
                             <p style="color:green">+@el.Amount@el.CurrencyCurrency</p>
-                            <p><a href="@Url.Action("Details", "Income", new { id = @el.Id })">Szczegoly</a></p>
-
+                            <!--<p><a href="@Url.Action("Details", "Income", new { id = @el.Id })">Szczegoly</a></p>-->
                         }
 
                         <div class="date">

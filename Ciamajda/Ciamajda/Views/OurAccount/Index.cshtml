@@ -21,8 +21,7 @@
                     <td>Numer</td>
                     <td>Saldo</td>
                     <td>Data utworzenia</td>
-                    <td>Akcje
-                    <td>
+                    <td>Akcje<td>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +37,7 @@
                         <td>
                             <a href="@Url.Action("Edit", "ouraccount", new { id = @account.Id })" title="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
                             <a href="@Url.Action("Delete", "ouraccount", new { id = @account.Id })" title="Usuń" class="btn btn-primary fa fa-times"></a>
+                            <a href="@Url.Action("Details", "OurAccount", new { id = @account.Id })"  title="Szczegóły" class="btn btn-primary fa fa-arrow-right"></a>
                         </td>
                     </tr>
 
