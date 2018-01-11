@@ -19,6 +19,7 @@
                     <td>Numer</td>
                     <td>Saldo</td>
                     <td>Data utworzenia</td>                   
+                    <td>Edytuj</td>
                     <td>Usun</td>
                 </tr>
             </thead>
@@ -32,6 +33,7 @@
             <td>@account.Number</td>
             <td>@account.Balance</td>  
             <td>@account.CreationDate</td> 
+            <td><a href="@Url.Action("Edit", "ouraccount", new { id = @account.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
             <td><a href="@Url.Action("Delete", "ouraccount", new { id = @account.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
         </tr>
 
