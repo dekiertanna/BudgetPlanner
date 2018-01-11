@@ -2,53 +2,59 @@
 
 @{
     ViewData["Title"] = "Create";
-
-
-
 }
-<h2>Dodaj miejsce</h2>
+<div>
+    <h4 style="text-align: center">
+        Edutuj miejsce
+    </h4>
+    <hr />
+</div>
 <div align="center">
     @using (Html.BeginForm("edit", "Place", FormMethod.Post))
     {
-        <table class="table">
+        <div>
+            <div class="col-sm-12">
+                @Html.EditorFor(model => model.UserId)
+            </div>
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Name, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Name, new { @style = "float: right; width: 90%;" })
+                </div>
+            </div>
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Street, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Street, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Street, new { @style = "float: right; width: 90%;" })
+                </div>
+            </div>
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.City, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.City, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.City, new { @style = "float: right; width: 90%;" })
+                </div>
+            </div>
 
+            <div class="col-sm-12" style="padding-bottom: 10px!important;">
+                @Html.ValidationMessageFor(model => model.Number, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Number, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Number, new { @style = "float: right; width: 90%;" })
+                </div>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <tr>
-                <td> @Html.LabelFor(model => model.Name) </td>
-                <td>@Html.TextBoxFor(model => model.Name) </td>
-                <td>@Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" }) </td>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(model => model.Street) </td>
-                <td>@Html.TextBoxFor(model => model.Street) </td>
-                <td>@Html.ValidationMessageFor(model => model.Street, "", new { @style = "color:red" }) </td>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(model => model.City) </td>
-                <td>@Html.TextBoxFor(model => model.City) </td>
-                <td>@Html.ValidationMessageFor(model => model.City, "", new { @style = "color:red" }) </td>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(model => model.Number) </td>
-                <td>@Html.TextBoxFor(model => model.Number) </td>
-                <td>@Html.ValidationMessageFor(model => model.Number, "", new { @style = "color:red" }) </td>
-            </tr>
-            @Html.EditorFor(model =>model.UserId)
-
-            <tr>
-                <td><input type="submit" value="Save" class="btn btn-default" /></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <div class="col-sm-12">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color: greenyellow;" />
+                <a asp-action="Index" class="btn btn-default" style="background-color: orangered;">Anuluj</a>
+            </div>
+        </div>
     }
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -2,10 +2,12 @@
 @{
     ViewData["Title"] = "Index";
 }
-<h1>ZARZĄDZANIE KONTAMI</h1>
-
 <div>
-    <a asp-action="Create">Dodaj konto</a>
+    <h4 style="text-align: center">
+        Twoje konta
+        <a asp-action="Create" title="Dodaj nowe konto" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
 </div>
 @if (ViewBag.accountlist != null)
 {
@@ -18,27 +20,29 @@
                     <td>Typ</td>
                     <td>Numer</td>
                     <td>Saldo</td>
-                    <td>Data utworzenia</td>                   
-                    <td>Edytuj</td>
-                    <td>Usun</td>
+                    <td>Data utworzenia</td>
+                    <td>Akcje
+                    <td>
                 </tr>
             </thead>
             <tbody>
 
-    @foreach (var account in ViewBag.accountlist)
+                @foreach (var account in ViewBag.accountlist)
                 {
-        <tr>
-            <td>@account.Name</td>
-            <td>@account.Type</td> 
-            <td>@account.Number</td>
-            <td>@account.Balance</td>  
-            <td>@account.CreationDate.ToString("yyyy-MM-dd")</td> 
-            <td><a href="@Url.Action("Edit", "ouraccount", new { id = @account.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
-            <td><a href="@Url.Action("Delete", "ouraccount", new { id = @account.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
-        </tr>
+                    <tr>
+                        <td>@account.Name</td>
+                        <td>@account.Type</td>
+                        <td>@account.Number</td>
+                        <td>@account.Balance</td>
+                        <td>@account.CreationDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "ouraccount", new { id = @account.Id })" title="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
+                            <a href="@Url.Action("Delete", "ouraccount", new { id = @account.Id })" title="Usuń" class="btn btn-primary fa fa-times"></a>
+                        </td>
+                    </tr>
 
                 }
-                </tbody>
-            </table>
-        </div>
-                }
+            </tbody>
+        </table>
+    </div>
+}
