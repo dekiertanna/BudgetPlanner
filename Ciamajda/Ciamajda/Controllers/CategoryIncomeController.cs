@@ -62,20 +62,19 @@ namespace Ciamajda.Controllers
             client.Delete(id);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int id)
         {
             CategoryIncomeClient client = new CategoryIncomeClient();
             CategoryIncomeViewModel CIVM = new CategoryIncomeViewModel();
             CIVM.CategoryIncome = client.Find(id);
-            return View("Edit", CIVM);
+            return View("Edit", CIVM.CategoryIncome);
         }
         [HttpPost]
-        public ActionResult Edit(CategoryIncomeViewModel CIVM)
+        public ActionResult Edit(CategoryIncome CIVM)
         {
             CategoryIncomeClient client = new CategoryIncomeClient();
-            client.Edit(CIVM.CategoryIncome);
+            client.Edit(CIVM);
             return RedirectToAction("Index");
         }
 

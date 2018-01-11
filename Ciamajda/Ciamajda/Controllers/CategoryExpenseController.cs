@@ -62,20 +62,19 @@ namespace Ciamajda.Controllers
             client.Delete(id);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int id)
         {
             CategoryExpenseClient client = new CategoryExpenseClient();
             CategoryExpenseViewModel CEVM = new CategoryExpenseViewModel();
             CEVM.CategoryExpense = client.Find(id);
-            return View("Edit", CEVM);
+            return View("Edit", CEVM.CategoryExpense);
         }
         [HttpPost]
-        public ActionResult Edit(CategoryExpenseViewModel CEVM)
+        public ActionResult Edit(CategoryExpense CEVM)
         {
             CategoryExpenseClient client = new CategoryExpenseClient();
-            client.Edit(CEVM.CategoryExpense);
+            client.Edit(CEVM);
             return RedirectToAction("Index");
         }
 
