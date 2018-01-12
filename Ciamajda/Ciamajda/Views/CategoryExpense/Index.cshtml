@@ -25,8 +25,8 @@
                         <td>@category.Name</td>
                         <td>@category.Description</td>
                         <td>
-                            <a href="@Url.Action("Edit", "CategoryExpense", new { id = @category.Id })" class="btn btn-primary fa fa-pencil-square-o"></a>
-                            <a href="@Url.Action("Delete", "CategoryExpense", new { id = @category.Id })" class="btn btn-primary fa fa-times"></a>
+                            <a href="@Url.Action("Edit", "CategoryExpense", new { id = @category.Id })" text="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
+                            <a href="@Url.Action("Delete", "CategoryExpense", new { id = @category.Id })" text="Usuń" class="btn btn-primary fa fa-times"></a>
                         </td>
                     </tr>
 
