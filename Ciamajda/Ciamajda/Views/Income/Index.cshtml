@@ -32,7 +32,6 @@
                 <td>Konto</td>
                 <td>Kategoria</td>
                 <td>Czas</td>
-                <td>Opis</td>
                 <td>Akcje</td>
             </tr>
         </thead>
@@ -55,7 +54,6 @@
                         {
                             <td>@income.Time.ToString("yyyy-MM-dd")</td>
                         }
-                        <td class='@(@income.Time>= DateTime.Now) '>@income.Description</td>
                         <td class='@(@income.Time>= DateTime.Now) '>
                             <a href="@Url.Action("Edit", "income", new { id = @income.Id })" text="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
                             <a href="@Url.Action("Delete", "income", new { id = @income.Id })" text="Usuń" class="btn btn-primary fa fa-times"></a>

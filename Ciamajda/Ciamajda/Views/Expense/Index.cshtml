@@ -34,7 +34,6 @@
                 <td>Kategoria</td>
                 <td>Miejsce</td>
                 <td id="czas">Czas</td>
-                <td>Opis</td>
                 <td>Akcje</td>
             </tr>
         </thead>
@@ -60,8 +59,6 @@
                         {
                             <td>@expense.Time.ToString("yyyy-MM-dd")</td>
                         }
-
-                        <td class='@(@expense.Time>= DateTime.Now) '>@expense.Description</td>
 
                         <td class='@(@expense.Time>= DateTime.Now) '>
                             <a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })" text="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
