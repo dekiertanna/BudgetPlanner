@@ -3,119 +3,133 @@
 
 @{
     ViewData["Title"] = "Create";
-
-
-
 }
-<h2>Dodaj wydatek</h2>
+<div>
+    <h4 style="text-align: center">
+        Edytuj Wydatek
+    </h4>
+    <hr />
+</div>
 <div align="center">
     @using (Html.BeginForm("Edit", "Expense", FormMethod.Post))
     {
-        <table class="table">
-            <tr>
-                <td>@Html.LabelFor(model => model.Expense.Title) </td>
-                <td>@Html.TextBoxFor(model => model.Expense.Title) </td>
-                <td></td>
-            </tr>
-            <tr>
-                <td> @Html.LabelFor(model => model.Expense.Amount) </td>
-                <td>@Html.TextBoxFor(model => model.Expense.Amount) </td>
-                <td>@Html.ValidationMessageFor(model => model.Expense.Amount, "", new { @style = "color:red" }) </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(model => model.Expense.CurrencyCurrency)</td>
-                <td>
+        <div id="edit">
+            <div class="col-sm-12">
+                @Html.HiddenFor(model => model.Expense.Id)
+            </div>
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                <div>
+                    @Html.LabelFor(model => model.Expense.Title, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Expense.Title, new { @style = " float: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.Amount, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.Amount, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Expense.Amount, new { @style = "float: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.CurrencyCurrency, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.CurrencyCurrency, new { @style = "float: left;" })
                     @Html.DropDownListFor(model => model.Expense.CurrencyCurrency, new SelectListItem[]{
                         new SelectListItem() {Text = "PLN", Value="PLN"},
                         new SelectListItem() {Text = "GBP", Value="GBP"},
                         new SelectListItem() {Text = "EUR", Value="EUR"},
-                        new SelectListItem() {Text = "USD", Value="USD"}})
-                </td>
-                <td>@Html.ValidationMessageFor(model => model.Expense.CurrencyCurrency, "", new { @style = "color:red" }) </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.AccountId) </td>
-            <td>
-                @Html.DropDownListFor(model=>model.Expense.AccountId,
-                    new SelectList(ViewBag.accountidlist,"Value","Text"),
-                    "-Wybierz-",
-                    new { })
-            </td>
-            <td>@Html.ValidationMessageFor(model => model.Expense.AccountId, "", new { @style = "color:red" }) </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.CategoryId) </td>
-            <td>@Html.DropDownListFor(model => model.Expense.CategoryId,
-                    new SelectList(ViewBag.categorylist, "Value", "Text"),
-                    "-Wybierz-",
-                    new { })
-            </td>
-            <td>@Html.ValidationMessageFor(model => model.Expense.CategoryId, "", new { @style = "color:red" }) </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.Place) </td>
-            <td>@Html.DropDownListFor(model => model.Expense.Place,
-                    new SelectList(ViewBag.placelist, "Value", "Text"),
-                    "-Wybierz-",
-                    new{})
-            </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.IsCyclical) </td>
-            <td>@Html.CheckBoxFor(model => model.Expense.IsCyclical, false) </td>
-            <td>@Html.ValidationMessageFor(model => model.Expense.IsCyclical, "", new { @style = "color:red" }) </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.DaysCycle) </td>
-            <td>@Html.TextBoxFor(model => model.Expense.DaysCycle) </td>
-            <td>@Html.ValidationMessageFor(model => model.Expense.DaysCycle, "", new { @style = "color:red" }) </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.CycleType) </td>
-            <td>
-                @Html.DropDownListFor(model => model.Expense.CycleType, new SelectListItem[]{
-                    new SelectListItem() {Text = "Tygodniowy", Value="1"},
-                    new SelectListItem() {Text = "Miesięczny", Value="2"},
-                    new SelectListItem() {Text = "3-miesięczny", Value="3"},
-                    new SelectListItem() {Text = "Roczny", Value="4"}}, 
-                    "-Wybierz-",
-                    new{})
-            </td>
-            <td>@Html.ValidationMessageFor(model => model.Expense.CycleType, "", new { @style = "color:red" }) </td>
-        </tr>    
-        <tr>
-            <td>@Html.LabelFor(model => model.Expense.Time) </td>
-            <td>@Html.TextBoxFor(model=>model.Expense.Time, new { @id = "example1", @class="datepicker", value = Model.Expense.Time.ToString("YYYY-MM-DD") })
-            <td>@Html.ValidationMessageFor(model => model.Expense.Time, "", new { @style = "color:red" }) </td>
-        </tr>
-        <tr>
-            <td> @Html.LabelFor(model => model.Expense.Description) </td>
-            <td>@Html.TextAreaFor(model=>model.Expense.Description) </td>
-            <td></td>
-            <td>@Html.HiddenFor(model=> model.Expense.Id)</td>
-        </tr>
-                <tr>
-                    <td><input type="submit" value="Save" class="btn btn-default" /></td>
-                </tr>
-        </table>
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    }
-    </div>
+                        new SelectListItem() {Text = "USD", Value="USD"}}, new { @style = "float: right; width: 85%;" })
+                </div>
+            </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.AccountId, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.AccountId, new { @style = "float: left;" })
+                    @Html.DropDownListFor(model => model.Expense.AccountId, new SelectList(ViewBag.accountidlist, "Value", "Text"),
+                        "-Wybierz-", new { @style = "float: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.CategoryId, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.CategoryId, new { @style = "float: left;" })
+                    @Html.DropDownListFor(model => model.Expense.CategoryId,
+                        new SelectList(ViewBag.categorylist, "Value", "Text"),
+                        "-Wybierz-", new { @style = "float: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.IsCyclical, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.IsCyclical, new { @style = "text-align: left; float: left; width: 15% " })
+                    <div style="float: left;">
+                        @Html.CheckBoxFor(model => model.Expense.IsCyclical, false)
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.DaysCycle, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.DaysCycle, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Expense.DaysCycle, new { @style = "float: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.CycleType, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.CycleType, new { @style = "float: left; text-align: left; width: 15%" })
+                    @Html.DropDownListFor(model => model.Expense.CycleType, new SelectListItem[]{
+                            new SelectListItem() { Text = "Tygodniowy", Value = "1" },
+                            new SelectListItem() { Text = "Miesięczny", Value = "2" },
+                            new SelectListItem() { Text = "3-miesięczny", Value = "3" },
+                            new SelectListItem() { Text = "Roczny", Value = "4" }},
+                            "-Wybierz-", new { @style = "right: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Expense.Time, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Expense.Time, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Expense.Time, new { @id = "example1", @class = "datepicker", @style = "float: right; width: 85%;", value = Model.Expense.Time.ToString("yyyy-MM-dd") })
+                </div>
+            </div>
+
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                <div>
+                    @Html.LabelFor(model => model.Expense.Description, new { @style = "float: left;" })
+                    @Html.TextAreaFor(model => model.Expense.Description, new { @style = "float: right; width: 85%;" })
+                </div>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="col-sm-12" style="padding-top: 5px!important;">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color: greenyellow;" />
+                <a asp-action="Index" class="btn btn-default" style="background-color: orangered;">Anuluj</a>
+            </div>
+        </div>
     }
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
 <script>
     $(document).ready(function () {
         $('#Expense_IsCyclical').change(function () {
             OnIsCyclicalChange();
         });
-        
+
         OnIsCyclicalChange();
         $('.datepicker').datepicker();
     });

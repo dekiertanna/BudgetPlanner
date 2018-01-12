@@ -4,6 +4,7 @@
         content: " \25B4\25BE"
     }
 
+    /*
     table.sortable tbody tr:nth-child(2n) td {
         background: #fff
     }
@@ -11,39 +12,44 @@
     table.sortable tbody tr:nth-child(2n+1) td {
         background: #e6faff;
     }
+
+        */
 </style>
-    <div>
-        <a asp-action="Create">Dodaj wydatek</a>
-    </div>
-    <div class="table-responsive cart_info">
-       
-            <table class="table table-condensed sortable">
-                <thead>
-                    <tr>
-                      <td>Tytul</td>
-                      <td>Kwota</td>
-                      <td>Waluta</td>
-                      <td>Konto</td>
-                      <td>Kategoria</td>
-                      <td>Miejsce</td>
-                      <td id="czas">Czas</td>
-                      <td>Opis</td>
-                      <td>Edytuj</td>
-                      <td>Usun</td>
-                    </tr>
-                </thead>
-                <tbody>
-                @if (ViewBag.expenselist != null)
+<div>
+    <h4 style="text-align: center">
+        Wydatki
+        <a asp-action="Create" title="Dodaj nowy wydatek" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
+</div>
+<div class="table-responsive cart_info">
+
+    <table class="table table-condensed sortable">
+        <thead>
+            <tr>
+                <td>Tytul</td>
+                <td>Kwota</td>
+                <td>Waluta</td>
+                <td>Konto</td>
+                <td>Kategoria</td>
+                <td>Miejsce</td>
+                <td id="czas">Czas</td>
+                <td>Opis</td>
+                <td>Akcje</td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.expenselist != null)
+            {
+                @foreach (var expense in ViewBag.expenselist)
                 {
-                    @foreach (var expense in ViewBag.expenselist)
-                    {
-                        
+
                     <tr>
                         <td class='@(@expense.Time>= DateTime.Now) '>@expense.Title</td>
                         <td class='@(@expense.Time>= DateTime.Now) ' style="text-align:right;">@expense.Amount</td>
-                        <td class='@(@expense.Time>= DateTime.Now) ' >@expense.CurrencyCurrency</td>
-                        <td class='@(@expense.Time>= DateTime.Now) ' >@ViewBag.expenseviewmodel.GetAccountName(@expense.AccountId)</td>
-                        <td class='@(@expense.Time>= DateTime.Now) ' >@ViewBag.expenseviewmodel.GetCategoryName(@expense.CategoryId)</td>
+                        <td class='@(@expense.Time>= DateTime.Now) '>@expense.CurrencyCurrency</td>
+                        <td class='@(@expense.Time>= DateTime.Now) '>@ViewBag.expenseviewmodel.GetAccountName(@expense.AccountId)</td>
+                        <td class='@(@expense.Time>= DateTime.Now) '>@ViewBag.expenseviewmodel.GetCategoryName(@expense.CategoryId)</td>
                         <td class='@(@expense.Time>= DateTime.Now) '>@ViewBag.expenseviewmodel.GetPlaceName(@expense.Place)</td>
 
                         @if (expense.Time >= DateTime.Now)
@@ -52,24 +58,26 @@
                         }
                         else
                         {
-                           <td>@expense.Time.ToString("yyyy-MM-dd")</td>
+                            <td>@expense.Time.ToString("yyyy-MM-dd")</td>
                         }
 
-                        <td  class='@(@expense.Time>= DateTime.Now) '>@expense.Description</td>
-                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td class='@(@expense.Time>= DateTime.Now) '>@expense.Description</td>
+
+                        <td class='@(@expense.Time>= DateTime.Now) '>
+                            <a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })" text="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
+                            <a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })" text="Usuñ" class="btn btn-primary fa fa-times"></a>
+                        </td>
                     </tr>
 
-                    }
                 }
+            }
 
-                </tbody>
-            </table>
-        </div>
+        </tbody>
+    </table>
+</div>
 
 <script>
     $(document).ready(function () {
         $('.True').css('background-color', 'lightGray');
     });
 </script>
-    
