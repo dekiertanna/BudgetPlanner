@@ -83,17 +83,17 @@
     </header>
     <!-- End Header Section -->
     <div class="container">
-        >
-        <div class="myInlineBlockElement col-md-2 col-lg-2 col-sm-12 col-xs12 ">
+        <div>
             @await Html.PartialAsync("_menuPartial")
-        </div>
-        <div class="myInlineBlockElement col-md-10 col-lg-10 col-sm-12 col-xs12 ">
-            @RenderBody()
+            <div class="myInlineBlockElement col-md-10 col-lg-10 col-sm-12 col-xs12">
+                @RenderBody()
+            </div>
         </div>
     </div>
     <!-- start footer Section -->
     <footer id="ft_sec">
         <div class="container">
+            <hr />
             <div class="row">
                 <div class="col-lg-12">
                     <!--<div class="ft">
