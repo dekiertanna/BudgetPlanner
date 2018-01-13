@@ -1,8 +1,11 @@
 ﻿@model Ciamajda.Models.ViewModels.CategoryIncomeViewModel
 
-<h2>Kategorie przychodów</h2>
 <div>
-    <a asp-action="Create">Dodaj kategorie przychodu</a>
+    <h4 style="text-align: center">
+        Kategorie przychodów
+        <a asp-action="Create" title="Dodaj kategorie przychodu" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
 </div>
 <div class="table-responsive cart_info">
 
@@ -12,8 +15,7 @@
                 <td>Nazwa</td>
                 <td>Opis</td>
                 <td></td>
-                <td>Edytuj</td>
-                <td>Usun</td>
+                <td>Akcje</td>
 
             </tr>
         </thead>
@@ -26,8 +28,8 @@
                         <td>@category.Name</td>
                         <td>@category.Description</td>
                         <td></td>
-                        <td><a href="@Url.Action("Edit", "CategoryIncome", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="@Url.Action("Delete", "CategoryIncome", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td><a href="@Url.Action("Edit", "CategoryIncome", new { id = @category.Id })" class="btn btn-primary "><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="@Url.Action("Delete", "CategoryIncome", new { id = @category.Id })" class="btn btn-primary"><i class="fa fa-times"></i></a></td>
 
                     </tr>
 

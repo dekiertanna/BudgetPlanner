@@ -217,7 +217,7 @@ namespace Ciamajda.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        [ValidateRecaptcha]
+        
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;

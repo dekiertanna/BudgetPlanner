@@ -7,7 +7,12 @@
 
 
 }
-<h2>Dodaj przychod</h2>
+<div>
+    <h4 style="text-align: center">
+        Edytuj przychod
+    </h4>
+    <hr />
+</div>
 <div align="center">
     @using (Html.BeginForm("Edit", "Income", FormMethod.Post))
     {
@@ -87,7 +92,9 @@
                 <td></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Save" class="btn btn-default" /></td>
+                <td><input type="submit" value="Save" class="btn btn-default" />
+                    <a asp-action="Index" class="btn btn-default">Powrot</a>
+                </td>
                 <td></td>
                 <td></td>
             </tr>
@@ -96,9 +103,7 @@
     }
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

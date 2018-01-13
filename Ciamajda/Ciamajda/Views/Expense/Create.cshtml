@@ -7,7 +7,12 @@
 
 
 }
-<h2>Dodaj wydatek</h2>
+<div>
+    <h4 style="text-align: center">
+        Dodaj wydatek
+    </h4>
+    <hr />
+</div>
 <div align="center">
     @using (Html.BeginForm("create", "Expense", FormMethod.Post))
     {
@@ -95,16 +100,15 @@
             <td></td>
         </tr>
                 <tr>
-                    <td><input type="submit" value="Save" class="btn btn-default" /></td>
+                    <td><input type="submit" value="Save" class="btn btn-default" />
+                        <a asp-action="Index" class="btn btn-default" >Powrót</a></td>
                 </tr>
         </table>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     }
     </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
+
     @section Scripts {
         @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     }

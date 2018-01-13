@@ -12,9 +12,15 @@
         background: #e6faff;
     }
 </style>
-    <div>
-        <a asp-action="Create">Dodaj wydatek</a>
-    </div>
+
+<div>
+    <h4 style="text-align: center">
+        Twoje wydatki
+        <a asp-action="Create" title="Dodaj wydatek" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
+</div>
+
     <div class="table-responsive cart_info">
        
             <table class="table table-condensed sortable">
@@ -28,8 +34,7 @@
                       <td>Miejsce</td>
                       <td id="czas">Czas</td>
                       <td>Opis</td>
-                      <td>Edytuj</td>
-                      <td>Usun</td>
+                      <td>Akcje</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,8 +61,8 @@
                         }
 
                         <td  class='@(@expense.Time>= DateTime.Now) '>@expense.Description</td>
-                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td  class='@(@expense.Time>= DateTime.Now) '><a href="@Url.Action("Edit", "Expense", new { id = @expense.Id })"class="btn btn-primary "><i class="fa fa-pencil-square-o"></i></a>
+                        <a href="@Url.Action("Delete", "Expense", new { id = @expense.Id })"class="btn btn-primary "><i class="fa fa-times"></i></a></td>
                     </tr>
 
                     }
