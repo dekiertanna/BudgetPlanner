@@ -1,0 +1,30 @@
+Przemek Pyza³ka
+Przemek
+https://panel.dcsweb.pl/ 
+login : gargamel
+haslo : ZPI@2017
+adres witryny 
+gargamel.aspnet.pl
+Object moved
+panel.dcsweb.pl
+
+ANIA
+https://www.mikesdotnetting.com/article/261/integrating-web-api-with-asp-net-razor-web-pages
+Integrating Web API with ASP.NET Razor Web Pages
+ASP.NET Web API is the recommended way to build RESTful services over HTTP when using the ASP.NET stack. This article looks at incorporating Web API into an existing Razor Web Pages site, and provides a brief introduction to Web API itself.
+mikesdotnetting.com
+
+AGATA 
+https://yagha.visualstudio.com/ZPI/_backlogs/TaskBoard/Sprint%201?_a=requirements
+Wrzuci³am tam przed chwil¹ na proœbê Przemka czysty projekt ASP.net Core web application
+The Official Microsoft ASP.NET Site
+ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.
+asp.net
+Przemek
+Konfiguracja bazy danych:
+nazwa serwera: mssql01.dcsweb.pl,51433
+uwierzytelnianie sql serwer
+user 1474_Smerfetka
+pass ZPI@2017
+Database name
+1474_Smerfetka

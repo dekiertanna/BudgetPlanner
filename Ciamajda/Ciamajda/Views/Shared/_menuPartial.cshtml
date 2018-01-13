@@ -8,9 +8,6 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-
-
-
     ClaimsPrincipal currentUser = User;
 
     var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -21,43 +18,41 @@
     ViewBag.size = list.Count();
 
 
-    <div>
+    <div class="myInlineBlockElement col-md-2 col-lg-2 col-sm-12 col-xs12" >
         <!-- Przy dodawaniu kolejnych stron patrzcie na przykład w _ManageNav.cshtml -->
         <ul id="menu" class=" nav nav-pills nav-stacked">
             <li class=""><a asp-controller="Summary" asp-action="Index">Portfel</a></li>
-            @if (ViewBag.size!=null && ViewBag.size>0)
+            @if (ViewBag.size > 0)
             {
-            <li>
-                <a>Konta</a>
-                <ul class="active">
-                   @foreach(var element in ViewBag.AccountList)
-                    {
-                       <li><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })" class="btn btn-primary btn-lg"></a>@element.Name</li>
-                    }
-                </ul>
-            </li>
-           
-            <li class=""><a asp-controller="Income"  asp-action="Index">Przychody</a></li>
-            <li class=""><a asp-controller="Expense" asp-action="Index">Wydatki</a></li>
+                <li>
+                    <a>Konta</a>
+                    <ul class="active">
+                        @foreach (var element in ViewBag.AccountList)
+                        {
+                            <li><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id }) " style="width: 100%; padding-bottom: 5px!important;" class="btn btn-primary">@element.Name</a></li>
+                        }
+                    </ul>
+                </li>
+                <li class=""><a asp-controller="Income" asp-action="Index">Przychody</a></li>
+                <li class=""><a asp-controller="Expense" asp-action="Index">Wydatki</a></li>
             }
             <li class=""><a asp-controller="Place" asp-action="Index">Miejsca</a></li>
             @*@<li class=""><a asp-controller="Category" asp-action="Index">Kategorie</a></li>*@
             <li>
                 <a>Kategorie</a>
                 <ul class="active">
-                    <li><a href="@Url.Action("Index","CategoryIncome",new { id = "Kategorie przychodów" })" class="btn btn-primary btn-lg"></a>"Kategorie przychodów"</li>
-                    <li><a href="@Url.Action("Index","CategoryExpense",new { id = "Kategorie wydatków" })" class="btn btn-primary btn-lg"></a>"Kategorie wydatków"</li>
+                    <li><a href="@Url.Action("Index","CategoryIncome",new { id = "Kategorie przychodów" })" style="width: 100%" class="btn btn-primary">Przychody</a></li>
+                    <li><a href="@Url.Action("Index","CategoryExpense",new { id = "Kategorie wydatków" })" style="width: 100%" class="btn btn-primary">Wydatki</a></li>
                 </ul>
             </li>
-            <li class=""><a asp-action="">Analizy</a></li>
-            <li class=""><a asp-action="">Kalkulator</a></li>
+            <!--<li class=""><a asp-action="">Analizy</a></li>
+                <li class=""><a asp-action="">Kalkulator</a></li>-->
         </ul>
     </div>
 }
 else
 {
-    <div class="col-lg-0 col-md-0 col-sm-0"></div>
-
+    <div style="width: 0px;"></div>
 }
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 

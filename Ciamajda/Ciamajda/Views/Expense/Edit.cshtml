@@ -6,12 +6,12 @@
 }
 <div>
     <h4 style="text-align: center">
-        Dodaj Wydatek
+        Edytuj Wydatek
     </h4>
     <hr />
 </div>
 <div align="center">
-    @using (Html.BeginForm("create", "Expense", FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Expense", FormMethod.Post))
     {
         <div id="edit">
             <div class="col-sm-12">
@@ -99,7 +99,7 @@
                 @Html.ValidationMessageFor(model => model.Expense.Time, "", new { @style = "color:red" })
                 <div>
                     @Html.LabelFor(model => model.Expense.Time, new { @style = "float: left;" })
-                    @Html.TextBoxFor(model => model.Expense.Time, new { @id = "example1", @class = "datepicker", @style = "float: right; width: 85%;" })
+                    @Html.TextBoxFor(model => model.Expense.Time, new { @id = "example1", @class = "datepicker", @style = "float: right; width: 85%;", value = Model.Expense.Time.ToString("yyyy-MM-dd") })
                 </div>
             </div>
 

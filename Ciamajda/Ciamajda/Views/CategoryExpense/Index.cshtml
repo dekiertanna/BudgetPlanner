@@ -1,17 +1,19 @@
 ﻿@model Ciamajda.Models.ViewModels.CategoryExpenseViewModel
-
+    
 <div>
-    <a asp-action="Create">Dodaj kategorie wydatku</a>
+    <h4 style="text-align: center">
+        Kategorie wydatków
+        <a asp-action="Create" title="Dodaj nową kategorię" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
 </div>
 <div class="table-responsive cart_info">
-
     <table class="table table-condensed">
         <thead>
             <tr>
                 <td>Nazwa</td>
-                <td>Opis</td>
-                <td></td>
-
+                <td style="width: 60%;">Opis</td>
+                <td style="width: 20%;">Akcje</td>
             </tr>
         </thead>
         <tbody>
@@ -22,9 +24,10 @@
                     <tr>
                         <td>@category.Name</td>
                         <td>@category.Description</td>
-
-                        <td><a href="@Url.Action("Delete", "CategoryExpense", new { id = @category.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
-
+                        <td>
+                            <a href="@Url.Action("Edit", "CategoryExpense", new { id = @category.Id })" text="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
+                            <a href="@Url.Action("Delete", "CategoryExpense", new { id = @category.Id })" text="Usuń" class="btn btn-primary fa fa-times"></a>
+                        </td>
                     </tr>
 
                 }
@@ -33,3 +36,4 @@
         </tbody>
     </table>
 </div>
+

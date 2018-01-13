@@ -1,20 +1,25 @@
 ﻿@model Ciamajda.Models.ViewModels.IncomeViewModel
 <style type="text/css">
-
     table.sortable thead:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
         content: " \25B4\25BE"
     }
 
-    table.sortable tbody tr:nth-child(2n) td {
+    /*    table.sortable tbody tr:nth-child(2n) td {
         background: #fff
     }
 
     table.sortable tbody tr:nth-child(2n+1) td {
         background: #e6faff;
     }
+
+    */
 </style>
 <div>
-    <a asp-action="Create">Dodaj przychod</a>
+    <h4 style="text-align: center">
+        Przychody
+        <a asp-action="Create" title="Dodaj nowy przychód" style="float: right" class="fa fa-plus"></a>
+    </h4>
+    <hr />
 </div>
 <div class="table-responsive cart_info">
 
@@ -27,30 +32,44 @@
                 <td>Konto</td>
                 <td>Kategoria</td>
                 <td>Czas</td>
-                <td>Opis</td>
-                <td>Usun</td>
+                <td>Akcje</td>
             </tr>
         </thead>
         <tbody>
             @if (ViewBag.incomelist != null)
             {
-            @foreach (var income in ViewBag.incomeList)
-            {
+                @foreach (var income in ViewBag.incomeList)
+                {
                     <tr>
-                        <td>@income.Title</td>
-                        <td>@income.Amount</td>
-                        <td>@income.CurrencyCurrency</td>
-                        <td>@ViewBag.incomeviewmodel.GetAccountName(@income.AccountId)</td>
-                        <td>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>                      
-                        <td>@income.Time</td>
-                        <td>@income.Description</td>
-                        <td><a href="@Url.Action("Delete", "income", new { id = @income.Id })" class="btn btn-primary btn-lg"><i class="fa fa-times"></i></a></td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@income.Title</td>
+                        <td class='@(@income.Time>= DateTime.Now) ' style="text-align:right;">@income.Amount</td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@income.CurrencyCurrency</td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@ViewBag.incomeviewmodel.GetAccountName(@income.AccountId)</td>
+                        <td class='@(@income.Time>= DateTime.Now) '>@ViewBag.incomeviewmodel.GetCategoryName(@income.CategoryId)</td>
+                        @if (income.Time >= DateTime.Now)
+                        {
+                            <td class="True" style="color:red;">@income.Time.ToString("yyyy-MM-dd")</td>
+                        }
+                        else
+                        {
+                            <td>@income.Time.ToString("yyyy-MM-dd")</td>
+                        }
+                        <td class='@(@income.Time>= DateTime.Now) '>
+                            <a href="@Url.Action("Edit", "income", new { id = @income.Id })" text="Edytuj" class="btn btn-primary fa fa-pencil-square-o"></a>
+                            <a href="@Url.Action("Delete", "income", new { id = @income.Id })" text="Usuń" class="btn btn-primary fa fa-times"></a>
+                        </td>
 
                     </tr>
 
-            }
+                }
             }
 
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        $('.True').css('background-color', 'lightGray');
+    });
+</script>
+

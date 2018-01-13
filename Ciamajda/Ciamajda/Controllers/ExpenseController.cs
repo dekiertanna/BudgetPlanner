@@ -33,7 +33,7 @@ namespace Ciamajda.Controllers
             {
                 accounts.Add(el.Id);
             }
-            ViewBag.expenselist = client.FindAll(accounts);
+            ViewBag.expenselist = client.FindAll(accounts).OrderByDescending(x => x.Time);
            
             ViewBag.expenseviewmodel = md;
             return View(md);
@@ -41,13 +41,19 @@ namespace Ciamajda.Controllers
 
         // GET: Expense/Create
         [HttpGet]
-        public ActionResult Create()
+        public ActionResult Create(ExpenseViewModel model = null )
         {
-            ExpenseViewModel vm = new ExpenseViewModel();
+            ExpenseViewModel vm = model ?? new ExpenseViewModel();
             ClaimsPrincipal currentUser = User;
-           
+
+            PrepareLookups(currentUser, vm);
+            return View("Create");
+        }
+
+        private void PrepareLookups(ClaimsPrincipal currentUser, ExpenseViewModel vm)
+        {
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
-           
+
             List<SelectListItem> accountidlist = vm.GetAccountList(userId);
             List<SelectListItem> items = new List<SelectListItem>();
             foreach (var el in accountidlist)
@@ -55,7 +61,7 @@ namespace Ciamajda.Controllers
                 items.Add(new SelectListItem { Text = el.Text, Value = el.Value });
             }
 
-            ViewBag.accountidlist=items;
+            ViewBag.accountidlist = items;
 
             List<SelectListItem> categorylist = vm.GetCategoryExpenseList(userId);
             List<SelectListItem> categories = new List<SelectListItem>();
@@ -74,13 +80,19 @@ namespace Ciamajda.Controllers
             }
 
             ViewBag.placelist = places;
-            return View("Create");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Expense expense)
         {
+            if (!ModelState.IsValid)
+            {
+                return Create(new ExpenseViewModel()
+                {
+                    Expense = expense
+                });
+            }
             ExpenseClient client = new ExpenseClient();
             client.Create(expense);
             refreshBalance(expense.AccountId, expense.Amount, 0, 'c');
@@ -95,13 +107,14 @@ namespace Ciamajda.Controllers
             client.Delete(id);
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int id)
         {
+            ClaimsPrincipal currentUser = User;
             ExpenseClient client = new ExpenseClient();
             ExpenseViewModel CVM = new ExpenseViewModel();
             CVM.Expense = client.Find(id);
+            PrepareLookups(currentUser, CVM);
             return View("Edit", CVM);
         }
         [HttpPost]

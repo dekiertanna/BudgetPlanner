@@ -1,89 +1,56 @@
 <!-- start Service Section -->
+<div>
+    <h4 style="text-align: center">
+        Twoj portfel
+    </h4>
+    <hr />
+</div>
+<div >
+    <div class="row">
+        <div class="title_sec">
+            @if (ViewBag.size < 1)
+            {
+                <h2>Nie masz zadnych kont! Przejdz do zarzadzania kontami, aby zalozyc konto i moc dodawac przychody i wydatki.</h2>
+            }
+            else
+            {
+                <h2>Oto Twoje konta</h2>
+
+            }
+        </div>
+    </div>
 
     <div class="container">
-        <div class="row">
-           
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-                <div class="title_sec">
-
-                    <h1>Twoj portfel</h1>
-                    @if (ViewBag.size < 1)
-                    {
-                    <h2>Nie masz zadnych kont! Przejdz do zarzadzania kontami, aby zalozyc konto i moc dodawac przychody i wydatki.</h2>
-                    }
-                    else
-                    {
-                    <h2>Oto Twoje konta</h2>
-
-                    }
-                </div>
-            </div>
-            
-        </div>
         @{ int iterator = 0;}
-        @foreach(var element in ViewBag.accountlist)
+        @foreach (var element in ViewBag.accountlist)
         {
-                    @if (iterator == 0)      
-                    { <div class="row"></div>}
+            @if (iterator == 0)
+            { <div class="row"></div>}
 
-                           if (iterator % 3 == 0)
-                            {<div class="row"></div>}
+            if (iterator % 3 == 0)
+            {<div class="row"></div>}
 
-                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                            <div class="service">
-                                <i class="fa fa-usd"></i>
-                                <h2>@element.Name</h2>               
-                                <p>Typ:@element.Type</p>
-                                <p>Saldo:@element.Balance</p>
-                                <p>Numer konta<br>@element.Number</p>
-                                <p><a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })">Szczegoly</a></p>
-                                
-                            </div>
-                        </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a href="@Url.Action("Details", "OurAccount", new { id = @element.Id })">
+                    <div class="service">
+                        <i class="fa fa-usd"></i>
+                        <h2>@element.Name</h2>
+                        <p>Typ:@element.Type</p>
+                        <p>Saldo:@element.Balance</p>
+                        <p>Numer konta<br>@element.Number</p>
+
+                    </div>
+                </a>
+            </div>
 
             iterator++;
         }
-        </div>
-             
-   
-
-<!-- End Service Section -->
-
-<div style="container" class="col-lg-8 col-md-8 col-sm-8 col-xs12 ">
-
-    <!-- start progress bar Section -->
-    <section id="skill_sec">
-        <div>
-            <div class="row">
-                <div >
-                    
-                </div>
-                <div class="skills progress-bar1">
-                    <ul class="col-md-6 col-sm-12 col-xs-12 wow ">
-                        <li class="progress">
-                            <div class="progress-bar" data-width="85">
-                                Przychody
-                            </div>
-                        </li>
-                        <li class="progress">
-                            <div class="progress-bar" data-width="65">
-                                Wydatki
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-
-            </div>
-        </div>
-      
-     
-    </section>
-    <!-- End progress bar Section -->
+    </div>
 </div>
 
 
+
+<!-- End Service Section -->
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

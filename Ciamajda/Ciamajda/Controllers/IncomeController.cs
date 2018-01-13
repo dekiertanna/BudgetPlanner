@@ -33,7 +33,7 @@ namespace Ciamajda.Controllers
             {
                 accounts.Add(el.Id);
             }
-            ViewBag.incomelist = client.FindAll(accounts);
+            ViewBag.incomelist = client.FindAll(accounts).OrderByDescending(x => x.Time);
           
             ViewBag.incomeviewmodel = md;
             return View();
@@ -46,9 +46,17 @@ namespace Ciamajda.Controllers
         }
 
         // GET: Income/Create
-        public ActionResult Create()
+        public ActionResult Create(IncomeViewModel model = null)
         {
-            IncomeViewModel vm = new IncomeViewModel();
+            PrepareLookups(model);
+
+            
+            return View("Create");
+        }
+
+        private void PrepareLookups(IncomeViewModel model)
+        {
+            IncomeViewModel vm = model ?? new IncomeViewModel();
             ClaimsPrincipal currentUser = User;
 
             var userId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -69,9 +77,6 @@ namespace Ciamajda.Controllers
             }
 
             ViewBag.categorylist = categories;
-
-            
-            return View("Create");
         }
 
         // POST: Income/Create
@@ -79,6 +84,15 @@ namespace Ciamajda.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Income income)
         {
+            if (!ModelState.IsValid)
+            {
+                return Create(new IncomeViewModel()
+                {
+                    Income = income
+                });
+
+            }
+
             IncomeClient client = new IncomeClient();
             client.Create(income);
             refreshBalance(income.AccountId, income.Amount, 0, 'c');
@@ -91,6 +105,7 @@ namespace Ciamajda.Controllers
             IncomeClient client = new IncomeClient();
             IncomeViewModel CVM = new IncomeViewModel();
             CVM.Income = client.Find(id);
+            PrepareLookups(CVM);
             return View("Edit", CVM);
         }
 

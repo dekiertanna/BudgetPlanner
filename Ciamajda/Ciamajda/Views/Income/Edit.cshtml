@@ -1,18 +1,15 @@
 ﻿@model Ciamajda.Models.ViewModels.IncomeViewModel
-
-
 @{
     ViewData["Title"] = "Create";
 }
-
 <div>
     <h4 style="text-align: center">
-        Dodaj przychód
+        Edytuj przychód
     </h4>
     <hr />
 </div>
 <div align="center">
-    @using (Html.BeginForm("create", "Income", FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Income", FormMethod.Post))
     {
         <div id="edit">
             <div class="col-sm-12">
@@ -50,7 +47,7 @@
                 <div>
                     @Html.LabelFor(model => model.Income.AccountId, new { @style = "float: left;" })
                     @Html.DropDownListFor(model => model.Income.AccountId, new SelectList(ViewBag.accountidlist, "Value", "Text"),
-                 "-Wybierz-", new { @style = "float: right; width: 85%;" })
+                        "-Wybierz-", new { @style = "float: right; width: 85%;" })
                 </div>
             </div>
 
@@ -59,8 +56,8 @@
                 <div>
                     @Html.LabelFor(model => model.Income.CategoryId, new { @style = "float: left;" })
                     @Html.DropDownListFor(model => model.Income.CategoryId,
-                 new SelectList(ViewBag.categorylist, "Value", "Text"),
-                 "-Wybierz-", new { @style = "float: right; width: 85%;" })
+                        new SelectList(ViewBag.categorylist, "Value", "Text"),
+                        "-Wybierz-", new { @style = "float: right; width: 85%;" })
                 </div>
             </div>
 
@@ -74,32 +71,33 @@
                 </div>
             </div>
 
-            <div class="col-sm-12" style="padding-bottom: 5px!important;">
-                @Html.ValidationMessageFor(model => model.Income.DaysCycle, "", new { @style = "color:red" })
-                <div>
-                    @Html.LabelFor(model => model.Income.DaysCycle, new { @style = "float: left;" })
-                    @Html.TextBoxFor(model => model.Income.DaysCycle, new { @style = "float: right; width: 85%;" })
+           
+                <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                    @Html.ValidationMessageFor(model => model.Income.DaysCycle, "", new { @style = "color:red" })
+                    <div>
+                        @Html.LabelFor(model => model.Income.DaysCycle, new { @style = "float: left;" })
+                        @Html.TextBoxFor(model => model.Income.DaysCycle, new { @style = "float: right; width: 85%;" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-sm-12" style="padding-bottom: 5px!important;">
-                @Html.ValidationMessageFor(model => model.Income.CycleType, "", new { @style = "color:red" })
-                <div>
-                    @Html.LabelFor(model => model.Income.CycleType, new { @style = "float: left; text-align: left; width: 15%" })
-                    @Html.DropDownListFor(model => model.Income.CycleType, new SelectListItem[]{
+                <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                    @Html.ValidationMessageFor(model => model.Income.CycleType, "", new { @style = "color:red" })
+                    <div>
+                        @Html.LabelFor(model => model.Income.CycleType, new { @style = "float: left; text-align: left; width: 15%" })
+                        @Html.DropDownListFor(model => model.Income.CycleType, new SelectListItem[]{
                             new SelectListItem() { Text = "Tygodniowy", Value = "1" },
                             new SelectListItem() { Text = "Miesięczny", Value = "2" },
                             new SelectListItem() { Text = "3-miesięczny", Value = "3" },
                             new SelectListItem() { Text = "Roczny", Value = "4" }},
-                     "-Wybierz-", new { @style = "right: right; width: 85%;" })
+                            "-Wybierz-", new { @style = "right: right; width: 85%;" })
+                    </div>
                 </div>
-            </div>
 
             <div class="col-sm-12" style="padding-bottom: 5px!important;">
                 @Html.ValidationMessageFor(model => model.Income.Time, "", new { @style = "color:red" })
                 <div>
                     @Html.LabelFor(model => model.Income.Time, new { @style = "float: left;" })
-                    @Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @class = "datepicker" , @style = "float: right; width: 85%;" })
+                    @Html.TextBoxFor(model => model.Income.Time, new { @id = "example1", @class = "datepicker", @style = "float: right; width: 85%;", value = Model.Income.Time.ToString("YYYY-MM-DD") })
                 </div>
             </div>
 

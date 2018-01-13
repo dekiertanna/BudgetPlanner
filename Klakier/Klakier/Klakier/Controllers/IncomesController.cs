@@ -93,6 +93,30 @@ namespace Klakier.Controllers
             }
 
             _context.Income.Add(income);
+            if (income.IsCyclical)
+            {
+                var time = income.Time;
+                for (int i = 0; i < income.DaysCycle - 1; i++)
+                {
+                    time = GetNextCycleTime(time, income.CycleType);
+                    var cyclicIncome = new Income()
+                    {
+                        Time = time,
+                        AccountId = income.AccountId,
+                        DaysCycle = income.DaysCycle,
+                        IsCyclical = income.IsCyclical,
+                        Amount = income.Amount,
+                        CategoryId = income.CategoryId,
+                        CycleType = income.CycleType,
+                        CurrencyCurrency = income.CurrencyCurrency,
+                        Description = income.Description,
+                        Title = income.Title
+                    };
+
+                    _context.Income.Add(cyclicIncome);
+                }
+            }
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetIncome", new { id = income.Id }, income);
@@ -124,6 +148,26 @@ namespace Klakier.Controllers
         private bool IncomeExists(int id)
         {
             return _context.Income.Any(e => e.Id == id);
+        }
+
+        private DateTime GetNextCycleTime(DateTime incomeTime, int? incomeCycleType)
+        {
+            if (incomeCycleType == 1)
+            {
+                return incomeTime.AddDays(7);
+            }
+
+            if (incomeCycleType == 2)
+            {
+                return incomeTime.AddMonths(1);
+            }
+
+            if (incomeCycleType == 3)
+            {
+                return incomeTime.AddMonths(3);
+            }
+
+            return incomeTime.AddYears(1);
         }
     }
 }

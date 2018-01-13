@@ -9,7 +9,7 @@ namespace Ciamajda.Models
     public class Flow
     {
         [Display(Name = "Czas")]
-        [DataType(DataType.DateTime), Required]
+        [DataType(DataType.DateTime), Required(ErrorMessage = "Pole jest wymagane")]
         [DisplayFormat(DataFormatString = "yyyy/MM/dd", ApplyFormatInEditMode = true)]
         public DateTime Time { get; set; }
 

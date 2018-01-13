@@ -2,43 +2,43 @@
 
 @{
     ViewData["Title"] = "Create";
-
-
-
 }
-<h2>Dodaj kategorie</h2>
-<div align="center">
+<div>
+    <h4 style="text-align: center">
+        Dodaj kategorię
+    </h4>
+    <hr />
+</div><div align="center">
     @using (Html.BeginForm("create", "CategoryExpense", FormMethod.Post))
     {
-        <table class="table">
-
-
-            <tr>
-                <td> @Html.LabelFor(model => model.Name) </td>
-                <td>@Html.TextBoxFor(model => model.Name) </td>
-            </tr>
-
-
-            <tr>
-                <td> @Html.LabelFor(model => model.Description) </td>
-                <td>@Html.TextAreaFor(model => model.Description) </td>
+        <div>
+            <div class="col-sm-12">
                 @Html.EditorFor(model => model.UserId)
-            </tr>
+            </div>
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                @Html.ValidationMessageFor(model => model.Name, "", new { @style = "color:red" })
+                <div>
+                    @Html.LabelFor(model => model.Name, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Name, new { @style = "float: right; width: 90%;" })
+                </div>
+            </div>
+            <div class="col-sm-12" style="padding-bottom: 5px!important;">
+                <div>
+                    @Html.LabelFor(model => model.Description, new { @style = "float: left;" })
+                    @Html.TextBoxFor(model => model.Description, new { @style = "float: right; width: 90%;" })
+                </div>
+            </div>
 
-            <tr>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-
-                <td><input type="submit" value="Save" class="btn btn-default" /></td>
-            </tr>
-        </table>
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <div class="col-sm-12" style="padding-top: 5px!important;">
+                <input type="submit" value="Save" class="btn btn-default" style="background-color: greenyellow;" />
+                <a asp-action="Index" class="btn btn-default" style="background-color: orangered;">Anuluj</a>
+            </div>
+        </div>
     }
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

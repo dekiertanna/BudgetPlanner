@@ -1,13 +1,13 @@
-﻿@model Ciamajda.Account;
+﻿@model Ciamajda.Account
 
 <div>
     <h4 style="text-align: center">
-        Dodaj konto
+        Edytuj konto
     </h4>
     <hr />
 </div>
 <div align="center">
-    @using (Html.BeginForm("create", "OurAccount", FormMethod.Post))
+    @using (Html.BeginForm("edit", "OurAccount", FormMethod.Post))
     {
         <div>
             <div class="col-sm-12">

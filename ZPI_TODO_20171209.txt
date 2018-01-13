@@ -1,0 +1,54 @@
+HOME
+- zmiana tekstu
+- znikanie po zalogowaniu
+
+ABOUT
+wywalić
+
+ZARZĄDZANIE KONTAMI
+- edycja konta + ikona
+- walidacja
+
+PORTFEL
+- usunąć słupki
+- grupowanie po 3 w rzędzie (SHOULD)
+- podpiąć ikonki pod typy konta
+
+HELLO!
+- przetłumaczyć na polski tekst
+
+STOPKA
+- ikonki zamienic na nieklikalne ładne
+
+SZCZEGÓŁY KONTAM
+- wywalić "Home page"
+- "szczegóły" zmianić na "opis wydatku" + przejście do wydatku/dochodu wydok details
+
+PRZYCHODY/WYDATKI
+- wywalić opis - przenieść do szczegółów
+- dodać edycje
+
+MIEJSCA
+- dodać nagłówek
+- edycja
+
+KATEGORIE
+- nagłówek
+
+ANALIZY
+- dodać wykresy (liniowe)
+- filtrowanie
+
+KALKULATOR
+- wywalić
+
+MENU BOCZNE ARTURA
+- poprawić linki do kont i kategorii
+
+WYDATKI CYKLICZNE ! (SALDO WYDATKÓW)
+EDYCJA + WALIDACJA - wszystkie widoki/encje
+DATETIME - obsługa czasu (wydatek, przychód)
+KURSY WALUT
+PRZELICZANIE NA CAŁEJ STRONIE
+GENEROWANIE RAPORTÓW PDF
+
